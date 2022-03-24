@@ -1,5 +1,5 @@
 # InTools website
-> Made by [unccoder](https://github.com/unccoderr)
+> Made by [unccoderr](https://github.com/unccoderr)
 
 ## Content changing 
 
