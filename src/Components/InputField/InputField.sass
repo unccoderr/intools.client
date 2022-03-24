@@ -1,0 +1,45 @@
+@use '../../Sass/colors'
+@use '../../Sass/typography'
+
+$transition: .1s ease-out
+
+.inputField
+	display: block
+	position: relative
+	&--label
+		transition: $transition
+		z-index: 1
+		position: absolute
+		top: 16px
+		left: 12px
+		@include typography.Body1(colors.$text-secondary-light)
+	&--input
+		transition: $transition
+		border: 0
+		display: block
+		width: 100%
+		padding: 16px 12px
+		border-radius: 8px
+		background: colors.$surface-textField-light
+		resize: none
+		overflow-y: hidden
+		@include typography.Body1
+		&:not([value='']), &:focus, &[type=datetime-local], &[type=date]
+			outline: 0
+			padding: 25px 12px 7px
+			& ~ .inputField--label
+				@include typography.ConstructorBody1(colors.$text-secondary-light)
+				transform: translateY(-9px)
+				font-weight: 500
+		&::-webkit-calendar-picker-indicator
+			background: transparent
+			bottom: 0
+			color: transparent
+			cursor: pointer
+			height: auto
+			left: 0
+			position: absolute
+			right: 0
+			top: 0
+			width: auto
+		

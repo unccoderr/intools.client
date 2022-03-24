@@ -1,0 +1,73 @@
+@use '../../../../Sass/typography'
+@use '../../../../Sass/colors'
+
+.postList
+	overflow-y: unset
+	padding-bottom: 30px
+	&--header
+		display: flex
+		justify-content: space-between
+		align-items: center
+		padding-bottom: 10px
+		& h2
+			display: inline-flex
+			align-items: center
+			@include typography.Title1
+			& img
+				margin-left: 10px
+				width: 32px
+				height: 32px
+		& button
+			display: flex
+			align-items: center
+			padding: 8px 16px 8px 8px
+			border-radius: 12px
+			background: colors.$buttons-accent-light
+			@include typography.Body1(colors.$text-static-light)
+			border: 0
+			& svg
+				fill: colors.$icons-static-light
+	&--tabs
+		list-style: none
+		display: flex
+	&--tab
+		& button
+			border: 0
+			transition: .1s ease-out
+			padding: 4px 16px
+			border-radius: 12px
+			@include typography.Body2(colors.$text-main-light)
+			background: colors.$surface-placeholder-light
+		&-active
+			& button
+				background: colors.$icons-main-light
+				color: colors.$text-static-light
+		&:not(:last-child)
+			margin-right: 14px
+	&--wrapper
+		padding-top: 32px
+		overflow-y: auto
+		& section
+			& h3
+				@include typography.Header
+				padding-bottom: 10px
+			&:not(:last-child)
+				margin-bottom: 32px
+		&Inner
+			display: grid
+			grid-template-columns: 1fr 1fr
+			grid-gap: 16px 30px
+			&:not(:last-child)
+				padding-bottom: 32px
+		&-empty
+			display: flex
+			flex-direction: column
+			justify-content: center
+			align-items: center
+			padding-top: 14%
+			& svg
+				margin-bottom: 8px
+			& > span
+				text-align: center
+				@include typography.Body1(colors.$text-secondary-light)
+			

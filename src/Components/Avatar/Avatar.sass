@@ -1,0 +1,32 @@
+@use '../../Sass/colors'
+@use '../../Sass/typography'
+@use '../../Sass/effects'
+
+.avatar
+	position: relative
+	aspect-ratio: 1
+	display: flex
+	align-items: center
+	justify-content: center
+	@include effects.inst(2)
+	border-radius: 50%
+	& > div
+		background: #FFFFFF
+		width: 88%
+		aspect-ratio: 1
+		position: absolute
+		background-size: cover
+		border-radius: 50%
+		display: flex
+		align-items: center
+		justify-content: center
+		& > div
+			width: 88%
+			aspect-ratio: 1
+			background-size: cover
+			background-position: center
+			border-radius: 50%
+	& svg
+		width: 37.5%
+		aspect-ratio: 1
+		fill: colors.$icons-static-light

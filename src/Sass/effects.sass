@@ -1,0 +1,28 @@
+@use './colors'
+
+@mixin inst($type: 1, $dark: false)
+	@if $type == 1
+		@if $dark == false
+			background: colors.$effect-inst1-light
+		@else
+			background: colors.$effect-inst1-dark
+	@else if $type == 2
+		@if $dark == false
+			background: colors.$effect-inst2-light
+		@else
+			background: colors.$effect-inst2-dark
+
+			
+@mixin pro($dark: false)
+	@if $dark == false
+		background: linear-gradient(95.11deg, #0099E6 4.16%, #791CCD 96.87%)
+	@else
+		background: linear-gradient(95.11deg, #0099E6 4.16%, #791CCD 96.87%)
+
+		
+@mixin blur($dark: false)
+	backdrop-filter: blur(48px)
+	@if $dark == false
+		background: rgba(209, 213, 219, 0.8)
+	@else
+		background: rgba(0, 0, 0, 0.6)

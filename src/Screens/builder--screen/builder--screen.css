@@ -1,0 +1,94 @@
+.builderScreen {
+  display: grid;
+  grid-template-columns: 48% 375px;
+  grid-column-gap: calc(100% - (375px + 48% + 2 * min(80px, 8%)));
+  height: calc(100% - 80px);
+  padding: 30px min(60px, 4%) 0;
+}
+.builderScreen > div:nth-child(2) {
+  margin: 64px 29% 0 0;
+}
+.builderScreen--header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 24px;
+}
+.builderScreen--header h1 {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 50px;
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: bold;
+}
+.builderScreen--header h1 img {
+  margin-left: 10px;
+  width: 32px;
+  height: 32px;
+}
+.builderScreen--header button {
+  border: 0;
+}
+.builderScreen--header button:first-child {
+  background: none;
+  width: 24px;
+  height: 24px;
+  margin-right: 1%;
+}
+.builderScreen--header button:last-child {
+  height: 32px;
+  padding: 4px;
+  border-radius: 50%;
+}
+.builderScreen--tabs {
+  list-style: none;
+  display: flex;
+  padding: 0 0 24px 5px;
+}
+.builderScreen--tab button {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px 8px 8px;
+  border-radius: 12px;
+  border: 1px solid #EB5757;
+  background: none;
+  font-family: "SF Pro Text", sans-serif;
+  color: #EB5757;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.builderScreen--tab button svg {
+  margin-right: 4px;
+  fill: #EB5757;
+}
+.builderScreen--tab:not(:last-child) {
+  margin-right: 15px;
+}
+.builderScreen--tab-primary button {
+  border-color: #0A4E9E;
+  background: #0A4E9E;
+  color: #FFFFFF;
+}
+.builderScreen--tab-primary button svg {
+  fill: #FFFFFF;
+}
+.builderScreen--switchList {
+  padding-bottom: 40px;
+}
+.builderScreen--button {
+  border: 0;
+  width: 48%;
+  padding: 16px 0;
+  border-radius: 12px;
+  background: #1FA1FF;
+  font-family: "SF Pro Text", sans-serif;
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=builder--screen.css.map */

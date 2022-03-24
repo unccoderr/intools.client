@@ -1,0 +1,303 @@
+.constructorBlock {
+  min-width: 375px;
+  border: 1px solid rgba(2, 13, 18, 0.7);
+  border-bottom: 0;
+  border-radius: 32px 32px 0 0;
+  overflow-y: hidden;
+  background: #FFFFFF;
+}
+.constructorBlock > div {
+  background: #FFFFFF;
+}
+.constructorBlock--statusBar {
+  padding: 14px 15px 0 29px;
+  display: flex;
+  justify-content: space-between;
+}
+.constructorBlock--statusBar time {
+  font-family: "SF Pro Text", sans-serif;
+  font-weight: bold;
+  color: #000000;
+  font-size: 15px;
+}
+.constructorBlock--statusBar div {
+  display: flex;
+  align-items: flex-end;
+}
+.constructorBlock--statusBar div svg {
+  fill: #000000;
+}
+.constructorBlock--statusBar div svg:last-child {
+  stroke: #000000;
+}
+.constructorBlock--statusBar div svg:not(:last-child) {
+  margin-right: 5px;
+}
+.constructorBlock--navBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 8px 0 8px;
+}
+.constructorBlock--navBar input {
+  border: 0;
+  text-align: center;
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+}
+.constructorBlock--navBar input::placeholder {
+  color: #000000;
+}
+.constructorBlock--stats {
+  padding: 20px 16px 0;
+  display: flex;
+  align-items: center;
+}
+.constructorBlock--statsAvatar {
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #DE0046 0%, #F7A34B 100%);
+}
+.constructorBlock--statsAvatar label {
+  width: 88px;
+  height: 88px;
+  margin: 3px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+}
+.constructorBlock--statsAvatar label input {
+  display: none;
+}
+.constructorBlock--statsAvatar label > div {
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  width: 78px;
+  height: 78px;
+}
+.constructorBlock--statsAvatar-empty {
+  background: #F2F2F2;
+}
+.constructorBlock--statsAvatar-empty label {
+  background: #F2F2F2;
+}
+.constructorBlock--stats ul {
+  list-style: none;
+  width: calc(100% - 78px);
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+.constructorBlock--stats ul li {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 13px;
+  font-weight: bold;
+}
+.constructorBlock--stats ul li input {
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  border: 0;
+  text-align: center;
+}
+.constructorBlock--stats ul li input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.constructorBlock--stats ul li input::placeholder {
+  color: #000000;
+}
+.constructorBlock--info {
+  padding: 10px 15px 0 15px;
+}
+.constructorBlock--info input, .constructorBlock--info textarea {
+  width: 100%;
+  border: 0;
+}
+.constructorBlock--info input:not(:last-child), .constructorBlock--info textarea:not(:last-child) {
+  margin-bottom: 3px;
+}
+.constructorBlock--info input:focus, .constructorBlock--info textarea:focus {
+  outline: 0;
+}
+.constructorBlock--info textarea {
+  overflow-y: auto;
+  resize: none;
+}
+.constructorBlock--info div {
+  margin-bottom: 3px;
+}
+.constructorBlock--info #username {
+  font-family: "SF Pro Display", sans-serif;
+  color: #959595;
+  font-size: 13px;
+  font-weight: bold;
+}
+.constructorBlock--info #category {
+  font-family: "SF Pro Display", sans-serif;
+  color: #959595;
+  font-size: 13px;
+  line-height: 16px;
+}
+.constructorBlock--info #biography {
+  margin-bottom: 3px;
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 13px;
+  line-height: 16px;
+}
+.constructorBlock--info #biography span {
+  color: #1FA1FF;
+}
+.constructorBlock--info #url {
+  font-family: "SF Pro Display", sans-serif;
+  color: #1FA1FF;
+  font-size: 13px;
+  line-height: 16px;
+}
+.constructorBlock--info #url::placeholder {
+  color: #1FA1FF;
+}
+.constructorBlock--buttons {
+  padding: 12px 15px 0;
+  display: grid;
+}
+.constructorBlock--buttonsWrapper {
+  display: flex;
+}
+.constructorBlock--buttonsWrapper-inner {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 6px;
+}
+.constructorBlock--buttonsWrapper-innerTwo {
+  grid-template-columns: 1fr 1fr;
+}
+.constructorBlock--buttonsItem {
+  padding: 7px 0;
+  border-radius: 3px;
+  border: 0.7px solid #EFEFEF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 13px;
+  font-weight: bold;
+}
+.constructorBlock--buttonsItem-active {
+  background: #1FA1FF;
+  color: #FFFFFF;
+}
+.constructorBlock--buttonsItem-market {
+  margin-bottom: 9px;
+}
+.constructorBlock--buttonsItem-dropdown {
+  margin-left: 6px;
+  padding: 7px;
+}
+.constructorBlock--stories {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+  padding: 4px 16px 0;
+}
+.constructorBlock--storiesItem label {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #EFEFEF;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.constructorBlock--storiesItem label input {
+  display: none;
+}
+.constructorBlock--storiesItem label div {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-size: cover;
+  background-color: #F2F2F2;
+  background-position: center;
+}
+.constructorBlock--storiesItem label svg {
+  fill: #828282;
+}
+.constructorBlock--storiesItem input {
+  border: 0;
+  background: transparent;
+  margin-top: 4px;
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 11px;
+  line-height: 16px;
+}
+.constructorBlock--icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 4px;
+}
+.constructorBlock--iconsItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #000000;
+}
+.constructorBlock--iconsItem:nth-child(1) svg {
+  stroke: #000000;
+}
+.constructorBlock--iconsItem:nth-child(2) svg {
+  fill: #000000;
+}
+.constructorBlock--iconsItem-active {
+  border-bottom-color: #959595;
+}
+.constructorBlock--iconsItem-active svg {
+  stroke: #959595;
+}
+.constructorBlock--gallery {
+  padding-top: 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1px;
+}
+.constructorBlock--galleryItem {
+  height: 123px;
+  background: #F2F2F2;
+}
+.constructorBlock--galleryItem label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.constructorBlock--galleryItem label div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.constructorBlock--galleryItem label input {
+  display: none;
+}
+
+/*# sourceMappingURL=ConstructorBlock.css.map */

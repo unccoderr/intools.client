@@ -1,0 +1,82 @@
+.formBlock {
+  width: 420px;
+  padding: 30px 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0px -2px 6px rgba(0, 0, 0, 0.04), 0px 0px 3px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  background: #FFFFFF;
+}
+.formBlock--header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 22px;
+}
+.formBlock--header h2 {
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+}
+.formBlock--header button {
+  border: 0;
+  padding: 7px;
+  border-radius: 50%;
+  max-height: 38px;
+}
+.formBlock--header button svg {
+  margin: 7px;
+}
+.formBlock input {
+  margin-bottom: 16px;
+}
+.formBlock--buttons {
+  padding-bottom: 16px;
+  display: flex;
+}
+.formBlock--buttons button, .formBlock--buttons a {
+  padding: 16px;
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #1FA1FF;
+}
+.formBlock--buttons button {
+  border: 0;
+  border-radius: 16px;
+  background: #1FA1FF;
+  color: #FFFFFF;
+}
+.formBlock--divider {
+  margin-bottom: 16px;
+  height: 1px;
+  background: #CFD2D4;
+}
+.formBlock--socials {
+  list-style: none;
+}
+.formBlock--socials li {
+  border: 1px solid #CFD2D4;
+  border-radius: 12px;
+}
+.formBlock--socials li a {
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  width: 100%;
+  padding: 16px 0 16px 29%;
+  display: flex;
+  align-items: center;
+}
+.formBlock--socials li a svg {
+  margin-right: 16px;
+}
+.formBlock--socials li:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+/*# sourceMappingURL=FormBlock.css.map */

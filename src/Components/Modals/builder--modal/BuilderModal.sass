@@ -1,0 +1,87 @@
+@use '../../../Sass/colors'
+@use '../../../Sass/typography'
+
+.builderModal
+	display: flex
+	align-items: center
+	justify-content: center
+	&--arrow
+		border: 0
+		border-radius: 50%
+		display: flex
+		align-items: center
+		justify-content: center
+		padding: 20px
+		background: colors.$surface-widget-light
+		&:last-child
+			margin-left: 32px
+		&:first-child
+			margin-right: 32px
+		& svg
+			stroke: colors.$icons-main-light
+		&:disabled
+			& svg
+				stroke: colors.$icons-secondary-light
+	&--wrapper
+		border-radius: 24px
+		background: colors.$surface-widget-light
+		width: 480px
+		padding: 24px 57px 32px 48px
+		display: grid
+		grid-gap: 16px
+	&--header
+		display: flex
+		align-items: center
+		justify-content: space-between
+		& h2
+			@include typography.Title2
+		& button
+			border: 0
+			background: transparent
+			@include typography.Header(colors.$text-link-light)
+	&--stepper
+		transition: .2s ease-out
+		list-style: none
+		display: flex
+		justify-content: space-between
+		position: relative
+		&Item
+			z-index: 2
+			height: 40px
+			width: 40px
+			display: flex
+			align-items: center
+			justify-content: center
+			background: colors.$surface-placeholder-light
+			border-radius: 50%
+			@include typography.Body2
+			&-active
+				background: colors.$buttons-accent-light
+				color: colors.$text-static-light
+		&:after
+			content: ''
+			position: absolute
+			top: 19px
+			height: 2px
+			width: 100%
+		&[data-tab='1']
+			&:after
+				background: linear-gradient(270deg, #F2F2F2 82%, #1FA1FF 85%)
+		&[data-tab='2']
+			&:after
+				background: linear-gradient(270deg, #F2F2F2 60%, #1FA1FF 65%)
+		&[data-tab='3']
+			&:after
+				background: linear-gradient(270deg, #F2F2F2 37%, #1FA1FF 45%)
+		&[data-tab='4']
+			&:after
+				background: linear-gradient(270deg, #F2F2F2 15%, #1FA1FF 20%)
+		&[data-tab='5']
+			&:after
+				background: linear-gradient(270deg, #F2F2F2 0, #1FA1FF 0)
+	&--button
+		border: 0
+		padding: 16px 18px
+		border-radius: 12px
+		background: colors.$buttons-accent-light
+		@include typography.Header(colors.$text-static-light)

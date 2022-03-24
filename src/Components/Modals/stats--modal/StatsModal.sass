@@ -1,0 +1,87 @@
+@use '../../../Sass/colors'
+@use '../../../Sass/typography'
+@use '../../../Sass/effects'
+
+.statsModal
+	min-width: 480px
+	height: 509px
+	background: #FFFFFF
+	border-radius: 24px
+	padding: 28px 0
+	
+	
+	&-positive
+		& span
+			color: colors.$icons-positive-light
+		& li:hover
+			background: colors.$surface-positive-light
+	&-negative
+		& span
+			color: colors.$text-negative-light
+		& li:hover
+			background: colors.$surface-negative-light
+	&-accent
+		& li:hover
+			background: colors.$surface-accent-light
+	&-default
+		& li:hover
+			background: colors.$surface-placeholder-light
+	&-hidden
+		opacity: 0
+		visibility: hidden
+	&--header
+		display: flex
+		justify-content: space-between
+		align-items: center
+		padding: 0 12px 16px 30px
+		& h2
+			@include typography.Title2
+		& span
+			padding-left: 4px
+		& button
+			border: 0
+			padding: 7px
+			display: flex
+			align-items: center
+			justify-content: center
+			border-radius: 50%
+			background: #F0F1F3
+	&--list
+		list-style: none
+		overflow-y: auto
+		height: calc(100% - 44px)
+		&::-webkit-scrollbar
+			width: 12px
+			background: #FFFFFF
+		&::-webkit-scrollbar-thumb
+			background: #e3e3e5
+			border-radius: 6px 0 0 6px
+		&Item
+			transition: .07s ease-out
+			display: flex
+			align-items: center
+			padding: 8px 30px
+			& div:first-child
+				width: 64px
+				aspect-ratio: 1
+				border-radius: 50%
+				background-position: center
+				background-size: cover
+				outline: 2px solid #FFF2F2
+			& div:last-child
+				padding-left: 16px
+				& h3
+					@include typography.Header
+				& p
+					@include typography.Body2(colors.$text-secondary-light)
+		&-empty
+			height: 100%
+			& > div
+				padding-top: 30%
+				& h3
+					@include typography.Title2
+					text-align: center
+					padding-bottom: 4px
+				& p
+					@include typography.Body1(colors.$text-secondary-light)
+					text-align: center

@@ -1,0 +1,58 @@
+.inputField {
+  display: block;
+  position: relative;
+}
+.inputField--label {
+  transition: 0.1s ease-out;
+  z-index: 1;
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  font-family: "SF Pro Text", sans-serif;
+  color: #959595;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.inputField--input {
+  transition: 0.1s ease-out;
+  border: 0;
+  display: block;
+  width: 100%;
+  padding: 16px 12px;
+  border-radius: 8px;
+  background: #F2F6F9;
+  resize: none;
+  overflow-y: hidden;
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.inputField--input:not([value=""]), .inputField--input:focus, .inputField--input[type=datetime-local], .inputField--input[type=date] {
+  outline: 0;
+  padding: 25px 12px 7px;
+}
+.inputField--input:not([value=""]) ~ .inputField--label, .inputField--input:focus ~ .inputField--label, .inputField--input[type=datetime-local] ~ .inputField--label, .inputField--input[type=date] ~ .inputField--label {
+  font-family: "SF Pro Display", sans-serif;
+  color: #959595;
+  font-size: 13px;
+  font-weight: bold;
+  transform: translateY(-9px);
+  font-weight: 500;
+}
+.inputField--input::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+
+/*# sourceMappingURL=InputField.css.map */

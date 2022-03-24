@@ -1,0 +1,115 @@
+.builderModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.builderModal--arrow {
+  border: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #FFFFFF;
+}
+.builderModal--arrow:last-child {
+  margin-left: 32px;
+}
+.builderModal--arrow:first-child {
+  margin-right: 32px;
+}
+.builderModal--arrow svg {
+  stroke: #000000;
+}
+.builderModal--arrow:disabled svg {
+  stroke: #959595;
+}
+.builderModal--wrapper {
+  border-radius: 24px;
+  background: #FFFFFF;
+  width: 480px;
+  padding: 24px 57px 32px 48px;
+  display: grid;
+  grid-gap: 16px;
+}
+.builderModal--header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.builderModal--header h2 {
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+}
+.builderModal--header button {
+  border: 0;
+  background: transparent;
+  font-family: "SF Pro Text", sans-serif;
+  color: #1FA1FF;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.builderModal--stepper {
+  transition: 0.2s ease-out;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.builderModal--stepperItem {
+  z-index: 2;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F2F2F2;
+  border-radius: 50%;
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 14px;
+  line-height: 20px;
+}
+.builderModal--stepperItem-active {
+  background: #1FA1FF;
+  color: #FFFFFF;
+}
+.builderModal--stepper:after {
+  content: "";
+  position: absolute;
+  top: 19px;
+  height: 2px;
+  width: 100%;
+}
+.builderModal--stepper[data-tab="1"]:after {
+  background: linear-gradient(270deg, #F2F2F2 82%, #1FA1FF 85%);
+}
+.builderModal--stepper[data-tab="2"]:after {
+  background: linear-gradient(270deg, #F2F2F2 60%, #1FA1FF 65%);
+}
+.builderModal--stepper[data-tab="3"]:after {
+  background: linear-gradient(270deg, #F2F2F2 37%, #1FA1FF 45%);
+}
+.builderModal--stepper[data-tab="4"]:after {
+  background: linear-gradient(270deg, #F2F2F2 15%, #1FA1FF 20%);
+}
+.builderModal--stepper[data-tab="5"]:after {
+  background: linear-gradient(270deg, #F2F2F2 0, #1FA1FF 0);
+}
+.builderModal--button {
+  border: 0;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: #1FA1FF;
+  font-family: "SF Pro Text", sans-serif;
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=BuilderModal.css.map */

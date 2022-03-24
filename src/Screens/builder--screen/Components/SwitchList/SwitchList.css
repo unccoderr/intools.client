@@ -1,0 +1,21 @@
+.switchList {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  grid-gap: 48px 4%;
+}
+.switchList--wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.switchList--wrapper h2 {
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 16px;
+}
+.switchList--wrapper label:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+/*# sourceMappingURL=SwitchList.css.map */

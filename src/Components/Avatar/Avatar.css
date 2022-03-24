@@ -1,0 +1,34 @@
+.avatar {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(95.74deg, #751BCF 4.11%, #FF4963 101.44%);
+  border-radius: 50%;
+}
+.avatar > div {
+  background: #FFFFFF;
+  width: 88%;
+  aspect-ratio: 1;
+  position: absolute;
+  background-size: cover;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar > div > div {
+  width: 88%;
+  aspect-ratio: 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+.avatar svg {
+  width: 37.5%;
+  aspect-ratio: 1;
+  fill: #FFFFFF;
+}
+
+/*# sourceMappingURL=Avatar.css.map */

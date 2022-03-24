@@ -1,0 +1,54 @@
+@use '../../../../Sass/typography'
+@use '../../../../Sass/colors'
+
+.builderList
+	height: 100%
+	position: relative
+	padding-bottom: 66px
+	&--header
+		padding-bottom: 17px
+		& h2
+			display: inline-flex
+			align-items: center
+			padding-bottom: 4px
+			@include typography.Title1
+			& img
+				margin-left: 10px
+				width: 32px
+				height: 32px
+		& p
+			@include typography.Body1(colors.$text-secondary-light)
+	&--list
+		padding-bottom: 126px
+		height: 100%
+		overflow-y: auto
+		&::-webkit-scrollbar
+			width: 0
+		& > div
+			&:not(:last-child)
+				margin-bottom: 17px
+		&-empty
+			padding-top: 40%
+			display: flex
+			justify-content: center
+			align-items: center
+			flex-direction: column
+			& svg
+				margin-bottom: 8px
+			& span
+				@include typography.Body1(colors.$text-secondary-light)
+				text-align: center
+	&--button
+		position: absolute
+		bottom: 24px
+		width: 100%
+		display: flex
+		align-items: center
+		justify-content: center
+		padding: 16px 0
+		border-radius: 12px
+		background: colors.$buttons-accent-light
+		@include typography.Header(colors.$text-static-light)
+		& svg
+			fill: colors.$icons-static-light
+			margin-right: 10px

@@ -1,0 +1,155 @@
+.subscriptionModal {
+  position: relative;
+  width: max(48%, 700px);
+  padding: 25px 25px 36px;
+  background: linear-gradient(16.6deg, #000000 4.81%, #27363D 78.47%), #000000;
+  border-radius: 24px;
+}
+.subscriptionModal:after {
+  content: "";
+  background-image: url("../../../Assets/Images/SubscriptionIllustration.png");
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 164px;
+  height: 201px;
+}
+.subscriptionModal--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 22px;
+}
+.subscriptionModal--header h2 {
+  display: inline-flex;
+  align-items: center;
+  font-family: "SF Pro Display", sans-serif;
+  color: #FFFFFF;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: bold;
+}
+.subscriptionModal--header h2 span {
+  margin-left: 20px;
+  font-family: "SF Pro Text", sans-serif;
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  border-radius: 27px;
+  padding: 2px 12px 4px;
+  background: linear-gradient(95.11deg, #0099E6 4.16%, #791CCD 96.87%);
+}
+.subscriptionModal--header svg {
+  cursor: pointer;
+  z-index: 2;
+}
+.subscriptionModal--benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 6%;
+  width: 88%;
+  padding-bottom: 24px;
+}
+.subscriptionModal--benefits h3 {
+  font-family: "SF Pro Text", sans-serif;
+  font-weight: bold;
+  color: #000000;
+  font-size: 22px;
+  line-height: 28px;
+  color: #FFFFFF;
+  padding-bottom: 4px;
+}
+.subscriptionModal--benefits ul {
+  list-style-position: inside;
+  list-style-image: url("list-style-icon.svg");
+}
+.subscriptionModal--benefits ul li {
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+.subscriptionModal--benefits ul li::marker {
+  margin-right: 8px;
+}
+.subscriptionModal--benefits ul li:not(:last-child) {
+  padding-bottom: 4px;
+}
+.subscriptionModal--fee {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 4%;
+  width: 80%;
+  padding-bottom: 33px;
+}
+.subscriptionModal--feeItem {
+  text-align: left;
+  background: transparent;
+  transition: 0.1s ease-out;
+  border: 2px solid #1E2D3E;
+  border-radius: 12px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+}
+.subscriptionModal--feeItem > span {
+  display: block;
+  transition: 0.1s ease-out;
+  min-width: 24px;
+  min-height: 24px;
+  margin-right: 16px;
+  background: url("./fee-input.svg");
+}
+.subscriptionModal--feeItem > div {
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 14px;
+  line-height: 22px;
+  color: #FFFFFF;
+}
+.subscriptionModal--feeItem > div span {
+  display: block;
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3FB4F6;
+}
+.subscriptionModal--fee-selected {
+  background: #1E2D3E;
+}
+.subscriptionModal--fee-selected > span {
+  background-color: transparent;
+  background-image: url("./fee-input-selected.svg");
+}
+.subscriptionModal--buttons {
+  display: flex;
+  align-items: center;
+}
+.subscriptionModal--buttonsItem {
+  border: 0;
+  background: transparent;
+  border-radius: 12px;
+  padding: 16px 0;
+  text-align: center;
+  width: 38%;
+  margin-right: 5%;
+  font-family: "SF Pro Text", sans-serif;
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 20px;
+}
+.subscriptionModal--buttonsItem-primary {
+  font-family: "SF Pro Text", sans-serif;
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  background: linear-gradient(95.11deg, #0099E6 4.16%, #791CCD 96.87%);
+}
+
+/*# sourceMappingURL=SubscriptionModal.css.map */

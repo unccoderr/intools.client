@@ -1,0 +1,70 @@
+@use '../../Sass/typography'
+@use '../../Sass/colors'
+
+.builderScreen
+	display: grid
+	grid-template-columns: 48% 375px
+	grid-column-gap: calc(100% - calc(375px + calc(48% + calc(2 * min(80px, 8%)))))
+	height: calc(100% - 80px)
+	padding: 30px min(60px, 4%) 0
+	& > div:nth-child(2)
+		margin: 64px 29% 0 0
+	&--header
+		display: flex
+		align-items: center
+		padding-bottom: 24px
+		& h1
+			display: inline-flex
+			align-items: center
+			padding-right: 50px
+			@include typography.Title1
+			& img
+				margin-left: 10px
+				width: 32px
+				height: 32px
+		& button
+			border: 0
+			&:first-child
+				background: none
+				width: 24px
+				height: 24px
+				margin-right: 1%
+			&:last-child
+				height: 32px
+				padding: 4px
+				border-radius: 50%
+				
+	&--tabs
+		list-style: none
+		display: flex
+		padding: 0 0 24px 5px
+	&--tab
+		& button
+			display: inline-flex
+			align-items: center
+			padding: 8px 16px 8px 8px
+			border-radius: 12px
+			border: 1px solid colors.$text-negative-light
+			background: none
+			@include typography.Body1(colors.$text-negative-light)
+			& svg
+				margin-right: 4px
+				fill: colors.$text-negative-light
+		&:not(:last-child)
+			margin-right: 15px
+		&-primary
+			& button
+				border-color: colors.$buttons-primary-light
+				background: colors.$buttons-primary-light
+				color: colors.$text-static-light
+				& svg
+					fill: colors.$icons-static-light
+	&--switchList
+		padding-bottom: 40px
+	&--button
+		border: 0
+		width: 48%
+		padding: 16px 0
+		border-radius: 12px
+		background: colors.$buttons-accent-light
+		@include typography.Header(colors.$text-static-light)

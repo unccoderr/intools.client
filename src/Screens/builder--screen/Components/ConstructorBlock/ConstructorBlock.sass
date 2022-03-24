@@ -1,0 +1,225 @@
+@use '../../../../Sass/typography'
+@use '../../../../Sass/colors'
+@use '../../../../Sass/effects'
+
+$gallery-gap: 1px
+$galleryItem-height: 124px
+$galleryItem-width: 1fr
+
+.constructorBlock
+	min-width: 375px
+	border: 1px solid rgba(2, 13, 18, 0.7)
+	border-bottom: 0
+	border-radius: 32px 32px 0 0
+	overflow-y: hidden
+	background: #FFFFFF
+	& > div
+		background: #FFFFFF
+	&--statusBar
+		padding: 14px 15px 0 29px
+		display: flex
+		justify-content: space-between
+		& time
+			@include typography.title(4)
+			font-size: 15px
+		& div
+			display: flex
+			align-items: flex-end
+			& svg
+				fill: colors.$text-main-light
+				&:last-child
+					stroke: colors.$text-main-light
+				&:not(:last-child)
+					margin-right: 5px
+	&--navBar
+		display: flex
+		justify-content: space-between
+		padding: 16px 8px 0 8px
+		& input
+			border: 0
+			text-align: center
+			@include typography.ConstructorTitle
+			&::placeholder
+				color: colors.$text-main-light
+	&--stats
+		padding: 20px 16px 0
+		display: flex
+		align-items: center
+		&Avatar
+			border-radius: 50%
+			box-sizing: border-box
+			@include effects.inst(1)
+			& label
+				width: 88px
+				height: 88px
+				margin: 3px
+				border-radius: 50%
+				display: flex
+				align-items: center
+				justify-content: center
+				background: #FFFFFF
+				& input
+					display: none
+				& > div
+					background-size: cover
+					background-position: center
+					border-radius: 50%
+					width: 78px
+					height: 78px
+			&-empty
+				background: colors.$surface-placeholder-light
+				& label
+					background: colors.$surface-placeholder-light
+		& ul
+			list-style: none
+			width: calc(100% - 78px)
+			display: grid
+			grid-template-columns: 33% 33% 33%
+			& li
+				text-align: center
+				display: flex
+				flex-direction: column
+				@include typography.ConstructorBody1
+				& input
+					@include typography.ConstructorNumbers
+					border: 0
+					text-align: center
+					&::-webkit-inner-spin-button
+						-webkit-appearance: none
+					&::placeholder
+						color: colors.$text-main-light
+	&--info
+		padding: 10px 15px 0 15px
+		& input, & textarea
+			width: 100%
+			border: 0
+			&:not(:last-child)
+				margin-bottom: 3px
+			&:focus
+				outline: 0
+		& textarea
+			overflow-y: auto
+			resize: none
+		& div
+			margin-bottom: 3px
+		& #username
+			@include typography.ConstructorBody1(#959595)
+		& #category
+			@include typography.ConstructorBody2(#959595)
+		& #biography
+			margin-bottom: 3px
+			@include typography.ConstructorBody2
+			& span
+				color: colors.$text-link-light
+		& #url
+			@include typography.ConstructorBody2(colors.$text-link-light)
+			&::placeholder
+				color: colors.$text-link-light
+		
+	&--buttons
+		padding: 12px 15px 0
+		display: grid
+		&Wrapper
+			display: flex
+			&-inner
+				width: 100%
+				display: grid
+				grid-template-columns: 1fr 1fr 1fr
+				grid-column-gap: 6px
+				&Two
+					grid-template-columns: 1fr 1fr
+		&Item
+			padding: 7px 0
+			border-radius: 3px
+			border: 0.7px solid colors.$buttons-outline-light
+			display: flex
+			align-items: center
+			justify-content: center
+			@include typography.ConstructorBody1
+			&-active
+				background: colors.$buttons-accent-light
+				color: colors.$text-static-light
+			&-market
+				margin-bottom: 9px
+			&-dropdown
+				margin-left: 6px
+				padding: 7px
+		
+	&--stories
+		display: grid
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+		grid-column-gap: 10px
+		padding: 4px 16px 0
+		&Item
+			& label
+				width: 60px
+				height: 60px
+				border: 1px solid colors.$buttons-outline-light
+				padding: 4px
+				border-radius: 50%
+				display: flex
+				align-items: center
+				justify-content: center
+				& input
+					display: none
+				& div
+					width: 100%
+					height: 100%
+					border-radius: 50%
+					background-size: cover
+					background-color: colors.$surface-placeholder-light
+					background-position: center
+				& svg
+					fill: #828282
+			& input
+				border: 0
+				background: transparent
+				margin-top: 4px
+				display: block
+				text-align: center
+				width: 100%
+				@include typography.ConstructorCaption
+	&--icons
+		display: grid
+		grid-template-columns: 1fr 1fr
+		padding-top: 4px
+		&Item
+			display: flex
+			align-items: center
+			justify-content: center
+			padding: 9px 0
+			border-bottom: 1px solid colors.$icons-main-light
+			&:nth-child(1)
+				& svg
+					stroke: colors.$icons-main-light
+			&:nth-child(2)
+				& svg
+					fill: colors.$icons-main-light
+			&-active
+				border-bottom-color: colors.$icons-secondary-light
+				& svg
+					stroke: colors.$icons-secondary-light
+	&--gallery
+		padding-top: 6px
+		display: grid
+		grid-template-columns: $galleryItem-width $galleryItem-width $galleryItem-width
+		grid-gap: $gallery-gap
+		&Item
+			height: 123px
+			background: colors.$surface-placeholder-light
+			& label
+				display: flex
+				align-items: center
+				justify-content: center
+				width: 100%
+				height: 100%
+				& div
+					display: flex
+					align-items: center
+					justify-content: center
+					background-position: center
+					background-size: cover
+					width: 100%
+					height: 100%
+				& input
+					display: none

@@ -1,0 +1,95 @@
+@use './colors'
+
+@mixin ConstructorTitle ($color: colors.$text-main-light)
+	font-family: "SF Pro Display", sans-serif
+	color: $color
+	font-size: 18px
+	font-weight: bold
+@mixin ConstructorBody1 ($color: colors.$text-main-light)
+	font-family: "SF Pro Display", sans-serif
+	color: $color
+	font-size: 13px
+	font-weight: bold
+@mixin ConstructorBody2 ($color: colors.$text-main-light)
+	font-family: "SF Pro Display", sans-serif
+	color: $color
+	font-size: 13px
+	line-height: 16px
+@mixin ConstructorCaption ($color: colors.$text-main-light)
+	font-family: "SF Pro Display", sans-serif
+	color: $color
+	font-size: 11px
+	line-height: 16px
+@mixin ConstructorNumbers ($color: colors.$text-main-light)
+	font-family: "SF Pro Display", sans-serif
+	color: $color
+	font-size: 16px
+	font-weight: bold
+
+
+@mixin Title1 ($color: colors.$text-main-light)
+	font-family: "SF Pro Display", sans-serif
+	color: $color
+	font-size: 32px
+	line-height: 40px
+	font-weight: bold
+@mixin Title2 ($color: colors.$text-main-light)
+	font-family: "SF Pro Display", sans-serif
+	color: $color
+	font-size: 22px
+	line-height: 28px
+	font-weight: 600
+@mixin Header ($color: colors.$text-main-light)
+	font-family: "SF Pro Text", sans-serif
+	color: $color
+	font-size: 16px
+	line-height: 24px
+	font-weight: 600
+@mixin Body1 ($color: colors.$text-main-light)
+	font-family: "SF Pro Text", sans-serif
+	color: $color
+	font-size: 16px
+	line-height: 24px
+	font-weight: 500
+@mixin Body2 ($color: colors.$text-main-light)
+	font-family: "SF Pro Text", sans-serif
+	color: $color
+	font-size: 14px
+	line-height: 20px
+@mixin Caption ($color: colors.$text-main-light)
+	font-family: "SF Pro Text", sans-serif
+	color: $color
+	font-size: 12px
+	line-height: 16px
+	
+	
+@mixin title($size: 1, $dark: false)
+	font-family: "SF Pro Text", sans-serif
+	font-weight: bold
+	color: colors.$text-main-light
+	@if $dark == true
+		color: colors.$text-main-dark
+	@if $size == 1
+		font-size: 32px
+		line-height: 40px
+	@else if $size == 2
+		font-size: 22px
+		line-height: 28px
+	@else if $size == 3
+		font-weight: 600
+		font-size: 16px
+		line-height: 24px
+		
+@mixin text($size: 1, $dark: false)
+	font-family: 'SF Pro Text', sans-serif
+	color: colors.$text-main-light
+	@if $dark == true
+		color: colors.$text-main-dark
+	@if $size == 1
+		font-weight: 500
+		font-size: 16px
+		line-height: 24px
+	@else if $size == 2
+		font-size: 14px
+		line-height: 22px
+	

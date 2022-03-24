@@ -1,0 +1,106 @@
+@use '../../../Sass/colors'
+@use '../../../Sass/typography'
+@use '../../../Sass/effects'
+
+.subscriptionModal
+	position: relative
+	width: max(48%, 700px)
+	padding: 25px 25px 36px
+	background: linear-gradient(16.6deg, #000000 4.81%, #27363D 78.47%), #000000
+	border-radius: 24px
+	&:after
+		content: ''
+		background-image: url('../../../Assets/Images/SubscriptionIllustration.png')
+		position: absolute
+		top: 0
+		right: 0
+		width: 164px
+		height: 201px
+	&--header
+		display: flex
+		justify-content: space-between
+		align-items: center
+		padding-bottom: 22px
+		& h2
+			display: inline-flex
+			align-items: center
+			@include typography.Title1(colors.$icons-static-light)
+			& span
+				margin-left: 20px
+				@include typography.Body1(colors.$text-static-light)
+				border-radius: 27px
+				padding: 2px 12px 4px
+				@include effects.pro
+		& svg
+			cursor: pointer
+			z-index: 2
+	&--benefits
+		display: grid
+		grid-template-columns: 1fr 1fr
+		grid-column-gap: 6%
+		width: 88%
+		padding-bottom: 24px
+		& h3
+			@include typography.title(2)
+			color: colors.$text-static-dark
+			padding-bottom: 4px
+		& ul
+			list-style-position: inside
+			list-style-image: url("list-style-icon.svg")
+			& li
+				@include typography.text(1)
+				color: colors.$text-static-dark
+				&::marker
+					margin-right: 8px
+				&:not(:last-child)
+					padding-bottom: 4px
+	&--fee
+		display: grid
+		grid-template-columns: 1fr 1fr
+		grid-column-gap: 4%
+		width: 80%
+		padding-bottom: 33px
+		&Item
+			text-align: left
+			background: transparent
+			transition: .1s ease-out
+			border: 2px solid colors.$surface-accent-dark
+			border-radius: 12px
+			padding: 8px 16px
+			display: flex
+			align-items: center
+			& > span
+				display: block
+				transition: .1s ease-out
+				min-width: 24px
+				min-height: 24px
+				margin-right: 16px
+				background: url("./fee-input.svg")
+				
+			& > div
+				@include typography.text(2)
+				color: colors.$text-main-dark
+				& span
+					display: block
+					@include typography.text(1)
+					color: colors.$text-primary-dark
+		&-selected
+			background: colors.$surface-accent-dark
+			& > span
+				background-color: transparent
+				background-image: url("./fee-input-selected.svg")
+	&--buttons
+		display: flex
+		align-items: center
+		&Item
+			border: 0
+			background: transparent
+			border-radius: 12px
+			padding: 16px 0
+			text-align: center
+			width: 38%
+			margin-right: 5%
+			@include typography.Body2(colors.$text-main-dark)
+			&-primary
+				@include typography.Header(colors.$text-static-dark)
+				@include effects.pro(true)

@@ -1,0 +1,26 @@
+@use '../../../../Sass/typography'
+@use '../../../../Sass/colors'
+
+.postItem
+	width: 100%
+	display: flex
+	align-items: center
+	&--image
+		background: colors.$surface-placeholder-light center
+		min-width: 96px
+		display: block
+		aspect-ratio: 1
+		border-radius: 12px
+		background-size: cover
+	&--text
+		margin-left: 12px
+		& h4
+			display: flex
+			align-items: center
+			@include typography.Header
+			& svg
+				margin-left: 4px
+				& path
+					stroke: colors.$icons-secondary-light
+		& p
+			@include typography.Body2(colors.$text-secondary-light)
