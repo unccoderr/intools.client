@@ -3,7 +3,7 @@
 
 ## Content changing 
 
-###Files
+### Files
 Inside [config folder](src/Config) are located localization files with variables.
 * [indexScreen--config](src/Config/indexScreen--config.tsx) for IndexScreen
 * [authScreen--config](src/Config/authScreen--config.ts) for AuthScreen and LoginScreen
