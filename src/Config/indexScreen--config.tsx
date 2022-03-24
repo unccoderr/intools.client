@@ -11,18 +11,18 @@ export const builderProfileList = {
         en: 'Add new',
         ru: 'Создать новый'
     },
-	empty_profiles: {
-		en: <>
-			You haven't created builder before
-			<br/>
-			Let’s create it!
-		</>,
-		ru: <>
-			Вы ещё не создали ни одного аккаунта
-			<br/>
-			Давайте создадим его!
-		</>
-	}
+    empty_profiles: {
+	en: <>
+		You haven't created builder before
+		<br/>
+		Let’s create it!
+	</>,
+	ru: <>
+		Вы ещё не создали ни одного аккаунта
+		<br/>
+		Давайте создадим его!
+	</>
+    }
 }
 
 export const builderProfileItem = {
