@@ -107,8 +107,8 @@ export const constructorBlock = {
 	},
 	stats: {
 		placeholder: {
-			en: '0,000',
-			ru: '0,000'
+			en: '0',
+			ru: '0'
 		},
 		posts: {
 			en: 'Posts',

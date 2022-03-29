@@ -66,6 +66,7 @@
   border-radius: 6px 0 0 6px;
 }
 .statsModal--listItem {
+  cursor: pointer;
   transition: 0.07s ease-out;
   display: flex;
   align-items: center;

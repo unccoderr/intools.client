@@ -2,7 +2,6 @@
 @use '../../../../Sass/colors'
 
 .builderItem
-	cursor: pointer
 	padding: 16px 11px 16px 16px
 	border-radius: 24px
 	border: 1px solid colors.$effect-blur-light
@@ -13,8 +12,16 @@
 		padding: 0 5px 8px 0
 		& h3
 			@include typography.Header
-		& svg
-			fill: colors.$icons-main-light
+		& button
+			height: 24px
+			width: 24px
+			background: none
+			border: none
+			cursor: pointer
+			&:not(:last-child)
+				margin-right: 8px
+			& svg
+				fill: colors.$icons-main-light
 	&--content
 		display: flex
 		align-items: center

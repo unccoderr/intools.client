@@ -8,14 +8,14 @@ import './index--screen.css'
 export const IndexScreen = () => {
 
 	return <AppContext.Consumer>
-		{ ({ user }) => <div className={'indexScreen'}>
+		{ ({ user }) => <main className={'indexScreen'}>
 			<div className={'indexScreen--posts'}>
 				<GreetingBlock className={'indexScreen--greeting'} />
 				{ user ? <StatsBlock className={'indexScreen--stats'} /> : <ConnectBlock/> }
 				<PostsList className={'indexScreen--posts'}/>
 			</div>
 			<BuilderList className={'indexScreen--profilerList'} />
-		</div> }
+		</main> }
 	</AppContext.Consumer>
 
 }

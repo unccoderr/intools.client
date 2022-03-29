@@ -1,6 +1,5 @@
 .avatar {
   position: relative;
-  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +9,7 @@
 .avatar > div {
   background: #FFFFFF;
   width: 88%;
-  aspect-ratio: 1;
+  height: 88%;
   position: absolute;
   background-size: cover;
   border-radius: 50%;
@@ -20,14 +19,14 @@
 }
 .avatar > div > div {
   width: 88%;
-  aspect-ratio: 1;
+  height: 88%;
   background-size: cover;
   background-position: center;
   border-radius: 50%;
 }
 .avatar svg {
   width: 37.5%;
-  aspect-ratio: 1;
+  height: 37.5%;
   fill: #FFFFFF;
 }
 

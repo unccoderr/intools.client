@@ -32,6 +32,16 @@ export const headerConfig = {
 				ru: 'Попробуй бесплатно'
 			},
 		},
+		language: {
+			header: {
+				en: 'Change language',
+				ru: 'Изменить язык'
+			},
+			description: {
+				en: 'Click to change language',
+				ru: 'Нажми, чтобы изменить язык'
+			},
+		},
 		exit: {
 			en: 'Exit',
 			ru: 'Выйти'

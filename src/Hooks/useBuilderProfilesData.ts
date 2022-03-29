@@ -25,7 +25,6 @@ const deleteProfile = (id: number) => {
 	const before = profilesList.slice(0, id)
 	const after = profilesList.slice(id + 1)
 	setProfileList(before.concat(after))
-	console.log(id, {before, after})
 }
 const updateProfile = (id: number, updatedProfile: BuilderProfile) => {
 	let profilesList = getProfilesList()

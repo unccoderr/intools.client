@@ -192,7 +192,15 @@ export const postsList = {
             <br/>
             Давайте запостим что - то!
         </>
-    }
+    },
+	today: {
+		en: 'Today',
+		ru: 'Сегодня'
+	},
+	at: {
+		en: 'at ',
+		ru: ''
+	}
 }
 
 export const plannerModal = {

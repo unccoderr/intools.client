@@ -17,7 +17,7 @@ export const PlannerModal = () => {
 	const { setOpenPlannerModal, openPlannerModal, language} = useContext(AppContext)
 	const { localize } = new useLocalization(language)
 	const { createPost } = usePostsData
-	const [description, setDescription] = useState('')
+	const [description, setDescription] = useState(localize(description_input.placeholder).toString())
 	const [src, setSrc] = useState('')
 	const [location, setLocation] = useState('')
 	const [schedule, toggleSchedule] = useState(false)

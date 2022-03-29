@@ -1,5 +1,4 @@
 .builderItem {
-  cursor: pointer;
   padding: 16px 11px 16px 16px;
   border-radius: 24px;
   border: 1px solid rgba(209, 213, 219, 0.8);
@@ -17,7 +16,17 @@
   line-height: 24px;
   font-weight: 600;
 }
-.builderItem--header svg {
+.builderItem--header button {
+  height: 24px;
+  width: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.builderItem--header button:not(:last-child) {
+  margin-right: 8px;
+}
+.builderItem--header button svg {
   fill: #000000;
 }
 .builderItem--content {

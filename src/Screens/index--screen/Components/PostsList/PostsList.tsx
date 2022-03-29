@@ -9,7 +9,7 @@ import './PostList.css'
 import { IPost } from "../../../../Types"
 
 import { postsList } from "../../../../Config"
-const { title, tabs, create_button, empty_posts } = postsList
+const { at, today, title, tabs, create_button, empty_posts } = postsList
 
 interface PostSection {
 	date: Date,
@@ -35,8 +35,8 @@ export const PostsList = ({ className }: PostsListProps) => {
 	}
 	const getSectionHeader = (date: Date) => {
 		const timestamp = new Date(date)
-		if (timestamp.getDate() === new Date().getDate()) return `Today` //12
-		else return 'at ' + timestamp.getDate() + '.' + timestamp.getMonth() + 1 + '.' + timestamp.getFullYear()
+		if (timestamp.getDate() === new Date().getDate()) return localize(today)
+		else return `${localize(at)}${timestamp.getDate()}.${timestamp.getMonth()}.${timestamp.getFullYear()}`
 	}
 
 	const hasPosts = posts.length > 0

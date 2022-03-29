@@ -60,6 +60,7 @@
   background: linear-gradient(180deg, #DE0046 0%, #F7A34B 100%);
 }
 .constructorBlock--statsAvatar label {
+  cursor: pointer;
   width: 88px;
   height: 88px;
   margin: 3px;
@@ -211,6 +212,7 @@
   padding: 4px 16px 0;
 }
 .constructorBlock--storiesItem label {
+  cursor: pointer;
   width: 60px;
   height: 60px;
   border: 1px solid #EFEFEF;
@@ -281,6 +283,7 @@
   background: #F2F2F2;
 }
 .constructorBlock--galleryItem label {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
