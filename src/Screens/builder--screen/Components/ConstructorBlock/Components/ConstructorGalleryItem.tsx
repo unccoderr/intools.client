@@ -1,7 +1,8 @@
-import { ChangeEvent, useState } from "react"
+import React, { ChangeEvent, useState } from "react"
 import { getBase64Src } from "../../../../../Utils";
 import { useBuilderProfilesData } from "../../../../../Hooks";
 import imageCompression from "browser-image-compression";
+
 
 interface ConstructorGalleryItemProps {
 	id: number,
@@ -27,11 +28,40 @@ export const ConstructorGalleryItem = ({ id, profileID, source } : ConstructorGa
 			})
     }
 
-	const onDragEnter = (e: any) => {
-		e.preventDefault()
-	}
+	/*const eventHandler = (e: DragEvent<HTMLDivElement>) => {
+		switch (e.type) {
+			case 'dragstart': {
+				const target = e.target as HTMLDivElement
+				target.classList.add(selectedClassname)
+				console.log('start')
+				break
+			}
+			case 'dragend': {
+				e.preventDefault()
+				const target = e.target as HTMLDivElement
+				target.classList.remove(selectedClassname)
+				console.log('end')
+				break
+			}
+			case 'dragover': {
+				e.preventDefault()
+				const currentElement = e.target as HTMLDivElement
+				const activeElement = document.querySelector('.' + selectedClassname)
 
-    return <div onDragEnd={onDragEnter} draggable={true} className={'constructorBlock--galleryItem'} >
+				const isMovable = activeElement !== currentElement
+				console.log(activeElement !== currentElement)
+				if (!isMovable) return
+
+				const nextElement = (currentElement === activeElement?.nextSibling) ? currentElement.nextSibling : currentElement
+				const gallery = document.querySelector('.constructorBlock--gallery')
+				if (activeElement) gallery?.insertBefore(activeElement, nextElement)
+
+				break
+			}
+		}*/
+
+
+    return <div draggable className={'constructorBlock--galleryItem'} data-id={id}>
         <label>
             <input type="file" onChange={updateSrc} accept=".jpg, .jpeg, .png" />
             { !src && <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">

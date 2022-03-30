@@ -1,5 +1,5 @@
 import './ConstructorBlock.css'
-import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useContext } from "react"
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useContext, useEffect } from "react"
 import { useBuilderProfilesData, useLocalization } from "../../../../Hooks"
 
 import { AppContext } from "../../../../app"
@@ -19,7 +19,7 @@ interface ConstructorBlock {
 export const ConstructorBlock = ({ profileID }: ConstructorBlock) => {
     const { language } = useContext(AppContext)
     const { localize } = new useLocalization(language)
-	const { getProfile, addGalleryItems } = useBuilderProfilesData
+	const { getProfile, addGalleryItems, updateProfile } = useBuilderProfilesData
 
 	const getMinutes = (date: Date) => date.getMinutes().toString().length === 1
 		? '0' + date.getMinutes().toString()
@@ -61,6 +61,57 @@ export const ConstructorBlock = ({ profileID }: ConstructorBlock) => {
 
 		window.location.reload()
 	}
+
+	useEffect(() => {
+		const gallery = document.querySelector(".constructorBlock--gallery") as HTMLDivElement
+		const items = document.querySelectorAll('.constructorBlock--galleryItem')
+
+		items.forEach(item => {
+			item.addEventListener(`dragstart`, e => {
+				const target = e.target as HTMLDivElement
+				target.classList.add(`constructorBlock--galleryItem-selected`)
+			})
+
+			item.addEventListener(`dragend`, e => {
+				const target = e.target as HTMLDivElement
+				target.classList.remove(`constructorBlock--galleryItem-selected`)
+			});
+
+			item.addEventListener(`dragover`, e => {
+				e.preventDefault()
+
+				const activeElement = document.querySelector(`.constructorBlock--galleryItem-selected`) as HTMLDivElement
+				const img = e.target as HTMLDivElement
+				const currentElement = img?.parentElement?.parentElement as HTMLDivElement
+				const isMovable = activeElement !== currentElement &&
+					currentElement.classList.contains(`constructorBlock--galleryItem`);
+
+				if (!isMovable) return
+				const nextElement = (currentElement === activeElement.nextSibling) ?
+					currentElement.nextSibling :
+					currentElement;
+
+				gallery.insertBefore(activeElement, nextElement)
+
+				let sources = []
+				for (let i = 0; i < gallery.children.length; i++) {
+					const child = gallery.children[i] as HTMLDivElement
+					if (child.draggable) {
+						const img = child.querySelector('#constructorGalleryItem') as HTMLDivElement
+						const source = img.style.backgroundImage.slice(5, -2)
+						sources.push(source)
+					}
+				}
+				updateProfile(profileID, {
+					...getProfile(profileID), gallery: sources
+				})
+			})
+		})
+		return () => {
+
+		};
+	}, []);
+
 
     return <ProfileBuilderContext.Consumer>
         { ({ stories, famousIcon, category,
