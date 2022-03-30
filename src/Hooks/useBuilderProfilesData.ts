@@ -47,7 +47,6 @@ const updateStoryItem = (profileID: number, storyID: number, data: string, type:
 }
 
 const updateGalleryItem = (profileID: number, galleryID: number, src: string) => {
-	console.log({ profileID, galleryID, src })
 	let profile = getProfile(profileID)
 	if (!profile) return
 	let gallery = profile.gallery

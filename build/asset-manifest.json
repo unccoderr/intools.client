@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.26f0a39b.css",
-    "main.js": "/static/js/main.05256034.js",
+    "main.js": "/static/js/main.9bf54a19.js",
     "static/media/SF-Pro-Display-Semibold.otf": "/static/media/SF-Pro-Display-Semibold.f50e0151c241f0e9d573.otf",
     "static/media/SF-Pro-Text-Semibold.otf": "/static/media/SF-Pro-Text-Semibold.e16deadd9dc50f769f31.otf",
     "static/media/SF-Pro-Text-Medium.otf": "/static/media/SF-Pro-Text-Medium.eec811a8c90a516708ea.otf",
@@ -20,10 +20,10 @@
     "index.html": "/index.html",
     "static/media/fee-input.svg": "/static/media/fee-input.070c97084513bc6abc66.svg",
     "main.26f0a39b.css.map": "/static/css/main.26f0a39b.css.map",
-    "main.05256034.js.map": "/static/js/main.05256034.js.map"
+    "main.9bf54a19.js.map": "/static/js/main.9bf54a19.js.map"
   },
   "entrypoints": [
     "static/css/main.26f0a39b.css",
-    "static/js/main.05256034.js"
+    "static/js/main.9bf54a19.js"
   ]
 }

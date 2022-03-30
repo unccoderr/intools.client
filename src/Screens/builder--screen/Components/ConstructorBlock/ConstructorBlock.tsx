@@ -24,9 +24,12 @@ export const ConstructorBlock = ({ profileID }: ConstructorBlock) => {
 	const getMinutes = (date: Date) => date.getMinutes().toString().length === 1
 		? '0' + date.getMinutes().toString()
 		: date.getMinutes().toString()
-	const handleInput = (e: ChangeEvent<HTMLInputElement>, setState?: Dispatch<SetStateAction<string>>) => {
+	const handleNumberInput = (e: ChangeEvent<HTMLInputElement>, setState?: Dispatch<SetStateAction<string>>) => {
 		if (!setState || isNaN(+e.target.value)) return
 		setState(e.target.value)
+	}
+	const handleInput = (e: ChangeEvent<HTMLInputElement>, setState?: Dispatch<SetStateAction<string>>) => {
+		if (setState) setState(e.target.value)
 	}
 	const onUnfocusedInput = (e: FormEvent<HTMLInputElement>, setState?: Dispatch<SetStateAction<string>>) => {
 		const target = e.target as HTMLInputElement
@@ -157,21 +160,21 @@ export const ConstructorBlock = ({ profileID }: ConstructorBlock) => {
 							<input placeholder={localize(stats.placeholder).toString()} type="text"
 								   value={postsCount}
 								   onBlur={e => onUnfocusedInput(e, setPostsCount)}
-								   onChange={e => handleInput(e, setPostsCount)} />
+								   onChange={e => handleNumberInput(e, setPostsCount)} />
 							{localize(stats.posts)}
 						</li>
 						<li>
 							<input placeholder={localize(stats.placeholder).toString()} type="text"
 								   value={followersCount}
 								   onBlur={e => onUnfocusedInput(e, setFollowersCount)}
-								   onChange={e => handleInput(e, setFollowersCount)} />
+								   onChange={e => handleNumberInput(e, setFollowersCount)} />
 							{localize(stats.followers)}
 						</li>
 						<li>
 							<input placeholder={localize(stats.placeholder).toString()} type="text"
 								   value={followingCount}
 								   onBlur={e => onUnfocusedInput(e, setFollowingCount)}
-								   onChange={e => handleInput(e, setFollowingCount)} />
+								   onChange={e => handleNumberInput(e, setFollowingCount)} />
 							{localize(stats.following)}
 						</li>
 					</ul>
