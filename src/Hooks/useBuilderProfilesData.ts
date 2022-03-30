@@ -32,7 +32,7 @@ const updateProfile = (id: number, updatedProfile: BuilderProfile) => {
 	setProfileList(profilesList)
 }
 
-const updateStory = (profileID: number, storyID: number, data: string, type: 'name' | 'src') => {
+const updateStoryItem = (profileID: number, storyID: number, data: string, type: 'name' | 'src') => {
 	let profile = getProfile(profileID)
 	if (!profile) return
 	let stories = profile.stories
@@ -45,7 +45,9 @@ const updateStory = (profileID: number, storyID: number, data: string, type: 'na
 	profiles[profileID] = profile
 	setProfileList(profiles)
 }
-const updateGallery = (profileID: number, galleryID: number, src: string) => {
+
+const updateGalleryItem = (profileID: number, galleryID: number, src: string) => {
+	console.log({ profileID, galleryID, src })
 	let profile = getProfile(profileID)
 	if (!profile) return
 	let gallery = profile.gallery
@@ -57,6 +59,12 @@ const updateGallery = (profileID: number, galleryID: number, src: string) => {
 	profiles[profileID] = profile
 	setProfileList(profiles)
 }
+const addGalleryItems = (profileID: number, sources: string) => {
+	const profile = getProfile(profileID)
+	updateProfile(profileID, {
+		...profile, gallery: profile.gallery.concat([sources])
+	})
+}
 
 const getProfileID = (timestamp: Date) => getProfilesList().findIndex(i => i.timestamp === timestamp)
 const getNewProfileID = () => getProfilesList().length
@@ -64,6 +72,7 @@ const getNewProfileID = () => getProfilesList().length
 export const useBuilderProfilesData = {
 	setProfileList, getProfilesList,
 	createProfile, getProfile, updateProfile, deleteProfile,
-	updateStory, updateGallery,
+	updateStoryItem,
+	updateGalleryItem, addGalleryItems,
 	getProfileID, getNewProfileID
 }

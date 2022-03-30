@@ -5,8 +5,8 @@ import { ProfileBuilderContext } from "../../builder--context"
 export const ConstructorAvatar = () => {
 	const { avatarURL, setAvatarURL } = useContext(ProfileBuilderContext)
 
-	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-		if (setAvatarURL) updateSrc(e, setAvatarURL)
+	const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
+		if (setAvatarURL) await updateSrc(e, setAvatarURL)
 	}
 
     return <div className={`constructorBlock--statsAvatar${!avatarURL ? ' constructorBlock--statsAvatar-empty' : ''}`}>

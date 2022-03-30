@@ -15,5 +15,3 @@ export * from './indexScreen--config'
 export * from './authScreen--config'
 export * from './builderScreen--config'
 export * from './header--config'
-
-console.log(IG_AUTH_URL)

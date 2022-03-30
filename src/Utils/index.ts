@@ -1,11 +1,18 @@
 import { ChangeEvent, Dispatch, SetStateAction } from "react"
+import imageCompression from 'browser-image-compression'
 
-export const updateSrc = (e: ChangeEvent<HTMLInputElement>, setSrc: Dispatch<SetStateAction<string>>) => {
+export const updateSrc = async (e: ChangeEvent<HTMLInputElement>, setSrc: Dispatch<SetStateAction<string>>) => {
 	if (!e.target.files || e.target.files.length === 0) return
 
 	const file = e.target.files[0]
+	const compressedFile = await imageCompression(file, {
+		maxSizeMB: 0.1,
+		maxWidthOrHeight: 1920,
+		useWebWorker: true
+	})
+
 	const reader = new FileReader()
-	reader.readAsDataURL(file)
+	reader.readAsDataURL(compressedFile)
 
 	reader.onload = () => {
 		if (reader.result) setSrc(reader.result.toString())

@@ -158,6 +158,10 @@ export const constructorBlock = {
 			en: 'Email',
 			ru: 'Почта'
 		},
+	},
+	stories_empty_label: {
+		en: 'Story',
+		ru: 'История'
 	}
 }
 

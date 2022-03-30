@@ -8,6 +8,7 @@ import { BuilderProfile } from "../../../Types"
 import { AppContext } from "../../../app"
 
 import { constructorBlock, switchList } from "../../../Config"
+const { header, stories_empty_label } = constructorBlock
 const { main, biography, buttons, content } = switchList
 
 interface ContextProps {
@@ -136,13 +137,13 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 				biography: '',
 				external_url: '',
 				stories: [
-					{src: '', name: 'Story 1'},
-					{src: '', name: 'Story 2'},
-					{src: '', name: 'Story 3'},
-					{src: '', name: 'Story 4'},
-					{src: '', name: 'Story 5'},
+					{ src: '', name: localize(stories_empty_label).toString() + ' 1' },
+					{ src: '', name: localize(stories_empty_label).toString() + ' 2' },
+					{ src: '', name: localize(stories_empty_label).toString() + ' 3' },
+					{ src: '', name: localize(stories_empty_label).toString() + ' 4' },
+					{ src: '', name: localize(stories_empty_label).toString() + ' 5' }
 				],
-				gallery: Array<string>(15)
+				gallery: []
 			})
 			updateProfileData(profile)
 			window.location.reload()
@@ -156,13 +157,29 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 	}
 	const exportProfile = () => {
 		const imageBlock = document.querySelector('#constructorBlock')
-		if (imageBlock) {
-			const img = imageBlock as HTMLElement
-			toPng(img)
-				.then(dataBase64 => require("downloadjs")(dataBase64, usernameValue || localize(constructorBlock.header).toString(), 'png'))
-				.catch(console.error)
-		}
+
+		const createNewImageBlock = document.querySelector('#constructorBlock--new') as HTMLElement
+		createNewImageBlock.style.display = 'none'
+
+		const emptyStoriesItems = document.querySelectorAll('#constructorBlock--emptyStoryIcon')
+		emptyStoriesItems.forEach((emptyStory: any) => {
+			emptyStory.style.display = 'none'
+		})
+
+		const img = imageBlock as HTMLElement
+		toPng(img, {
+			width: 375,
+			height: 1000,
+		})
+			.then(dataBase64 => require("downloadjs")(dataBase64, usernameValue || localize(header).toString(), 'png'))
+			.catch(console.error)
+
+		createNewImageBlock.style.display = 'block'
+		emptyStoriesItems.forEach((emptyStory: any) => {
+			emptyStory.style.display = 'block'
+		})
 	}
+
 	useEffect(() => {
 		if (getProfile(profileID)) {
 			const builderProfile = getProfile(profileID)
@@ -186,14 +203,15 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 				biography: biographyValue,
 				external_url: linkValue,
 				stories: [
-					{src: '', name: 'Story 1'},
-					{src: '', name: 'Story 2'},
-					{src: '', name: 'Story 3'},
-					{src: '', name: 'Story 4'},
-					{src: '', name: 'Story 5'},
+					{ src: '', name: localize(stories_empty_label).toString() + ' 1' },
+					{ src: '', name: localize(stories_empty_label).toString() + ' 2' },
+					{ src: '', name: localize(stories_empty_label).toString() + ' 3' },
+					{ src: '', name: localize(stories_empty_label).toString() + ' 4' },
+					{ src: '', name: localize(stories_empty_label).toString() + ' 5' }
 				],
-				gallery: Array(15)
+				gallery: []
 			})
+			window.location.reload()
 		}
 	}, [])
 	useEffect(() => {

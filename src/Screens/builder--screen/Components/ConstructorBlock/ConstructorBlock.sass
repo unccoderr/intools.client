@@ -2,16 +2,19 @@
 @use '../../../../Sass/colors'
 @use '../../../../Sass/effects'
 
-$gallery-gap: 1px
+$gallery-gap: 2px
 $galleryItem-height: 124px
-$galleryItem-width: 1fr
+$galleryItem-width: 124px
 
 .constructorBlock
-	min-width: 375px
+	min-width: 377px
 	border: 1px solid rgba(2, 13, 18, 0.7)
 	border-bottom: 0
 	border-radius: 32px 32px 0 0
-	overflow-y: hidden
+	overflow-y: auto
+	height: calc(100% - 64px)
+	&::-webkit-scrollbar
+		width: 0
 	background: #FFFFFF
 	& > div
 		background: #FFFFFF
@@ -51,8 +54,8 @@ $galleryItem-width: 1fr
 			@include effects.inst(1)
 			& label
 				cursor: pointer
-				width: 88px
-				height: 88px
+				min-width: 88px
+				min-height: 88px
 				margin: 3px
 				border-radius: 50%
 				display: flex
@@ -65,8 +68,8 @@ $galleryItem-width: 1fr
 					background-size: cover
 					background-position: center
 					border-radius: 50%
-					width: 78px
-					height: 78px
+					min-width: 80px
+					min-height: 80px
 			&-empty
 				background: colors.$surface-placeholder-light
 				& label
@@ -207,8 +210,8 @@ $galleryItem-width: 1fr
 		grid-template-columns: $galleryItem-width $galleryItem-width $galleryItem-width
 		grid-gap: $gallery-gap
 		&Item
-			height: 123px
-			background: colors.$surface-placeholder-light
+			min-width: $galleryItem-height
+			min-height: $galleryItem-width
 			& label
 				cursor: pointer
 				display: flex

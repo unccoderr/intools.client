@@ -22,7 +22,6 @@ export const BuilderList = ({ className }: BuilderListProps) => {
     const { localize } = new useLocalization(language)
 	const { getProfilesList, getNewProfileID } = useBuilderProfilesData
 	let builderAccounts: BuilderProfile[] = getProfilesList()
-
     return <div className={`builderList${className ? ` ${className}` : ''}`}>
         <div className="builderList--header">
             <h2 className={'builderList--header'}>

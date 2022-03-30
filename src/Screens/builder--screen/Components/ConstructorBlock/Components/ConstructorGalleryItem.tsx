@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react"
 import { getBase64Src } from "../../../../../Utils";
 import { useBuilderProfilesData } from "../../../../../Hooks";
+import imageCompression from "browser-image-compression";
 
 interface ConstructorGalleryItemProps {
 	id: number,
@@ -9,19 +10,28 @@ interface ConstructorGalleryItemProps {
 }
 export const ConstructorGalleryItem = ({ id, profileID, source } : ConstructorGalleryItemProps) => {
     const [src, setSrc] = useState(source)
-	const { updateGallery } = useBuilderProfilesData
+	const { updateGalleryItem } = useBuilderProfilesData
 
-    const updateSrc = (e: ChangeEvent<HTMLInputElement>) => {
+    const updateSrc = async (e: ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files || e.target.files.length === 0) return
 		const file = e.target.files[0]
-		getBase64Src(file)
+		const compressedFile = await imageCompression(file, {
+			maxSizeMB: 0.1,
+			maxWidthOrHeight: 1920,
+			useWebWorker: true
+		})
+		getBase64Src(compressedFile)
 			.then(base64URL => {
 				setSrc(base64URL)
-				updateGallery(profileID ? +profileID : 0, id, base64URL)
+				updateGalleryItem(profileID ? +profileID : 0, id, base64URL)
 			})
-
     }
-    return <div className={'constructorBlock--galleryItem'} >
+
+	const onDragEnter = (e: any) => {
+		e.preventDefault()
+	}
+
+    return <div onDragEnd={onDragEnter} draggable={true} className={'constructorBlock--galleryItem'} >
         <label>
             <input type="file" onChange={updateSrc} accept=".jpg, .jpeg, .png" />
             { !src && <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -9,6 +9,8 @@ import { ConstructorAvatar } from "./Components/ConstructorAvatar"
 import { ConstructorStoryItem } from "./Components/ConstructorStoryItem"
 
 import { constructorBlock } from '../../../../Config'
+import { getBase64Src } from "../../../../Utils"
+import imageCompression from "browser-image-compression"
 const { stats, info, buttons, header } = constructorBlock
 
 interface ConstructorBlock {
@@ -17,36 +19,47 @@ interface ConstructorBlock {
 export const ConstructorBlock = ({ profileID }: ConstructorBlock) => {
     const { language } = useContext(AppContext)
     const { localize } = new useLocalization(language)
-	const { getProfile } = useBuilderProfilesData
+	const { getProfile, addGalleryItems } = useBuilderProfilesData
 
 	const getMinutes = (date: Date) => date.getMinutes().toString().length === 1
 		? '0' + date.getMinutes().toString()
 		: date.getMinutes().toString()
 	const handleInput = (e: ChangeEvent<HTMLInputElement>, setState?: Dispatch<SetStateAction<string>>) => {
-		if (!setState) return
-		const value = e.target.value
+		if (!setState || isNaN(+e.target.value)) return
 		setState(e.target.value)
 	}
-	const beforeHandleInput = (e: FormEvent<HTMLInputElement>, setState?: Dispatch<SetStateAction<string>>) => {
-		if (!setState) return
+	const onUnfocusedInput = (e: FormEvent<HTMLInputElement>, setState?: Dispatch<SetStateAction<string>>) => {
+		const target = e.target as HTMLInputElement
+		if (!setState || target.value.includes('k') || target.value.includes('m')) return
+		const value = +target.value
 
-		/*const target = e.target as HTMLInputElement
-		const value = target.value
-		if (value.includes('k') || value.includes('m')) {
-			const index = value.indexOf('k') === -1 ? value.indexOf('m') : value.indexOf('k')
-			const count = value.slice(0, index)
-			console.log({ count, d: count[index], index })
-			if (value.includes('k')) setState((+count * 1000).toString())
-			if (value.includes('m')) setState((+count * 1000000).toString())
-		}*/
-
-		//setState(true)
+		if (value > 1000000) setState((value / 1000000).toFixed(0) + 'm')
+		else if (value > 1000) setState((value / 1000).toFixed(0) + 'k')
+		else setState(value.toString())
 	}
 	const handleTextarea = (e: ChangeEvent<HTMLTextAreaElement>, setState?: Dispatch<SetStateAction<string>>) => {
 		e.target.style.height = 'auto'
 		e.target.style.height = `${e.target.scrollHeight}px`
 		if (!setState) return
 		setState(e.target.value)
+	}
+	const createNewGalleryItem = async (e: ChangeEvent<HTMLInputElement>) => {
+		const files = e.target.files
+		if (!files || files.length === 0) return
+
+		for (let i = 0; i < files.length; i++) {
+			const file = files[i]
+			const compressedFile = await imageCompression(file, {
+				maxSizeMB: 0.1,
+				maxWidthOrHeight: 1920,
+				useWebWorker: true
+			})
+			getBase64Src(compressedFile)
+				.then(base64URL => addGalleryItems(profileID, base64URL))
+				.catch(console.error)
+		}
+
+		window.location.reload()
 	}
 
     return <ProfileBuilderContext.Consumer>
@@ -91,31 +104,45 @@ export const ConstructorBlock = ({ profileID }: ConstructorBlock) => {
 					<ul>
 						<li>
 							<input placeholder={localize(stats.placeholder).toString()} type="text"
-								   value={postsCount} onBlur={e => beforeHandleInput(e, setPostsCount)} onChange={e => handleInput(e, setPostsCount)} />
+								   value={postsCount}
+								   onBlur={e => onUnfocusedInput(e, setPostsCount)}
+								   onChange={e => handleInput(e, setPostsCount)} />
 							{localize(stats.posts)}
 						</li>
 						<li>
 							<input placeholder={localize(stats.placeholder).toString()} type="text"
-								   value={followersCount} onChange={e => handleInput(e, setFollowersCount)} />
+								   value={followersCount}
+								   onBlur={e => onUnfocusedInput(e, setFollowersCount)}
+								   onChange={e => handleInput(e, setFollowersCount)} />
 							{localize(stats.followers)}
 						</li>
 						<li>
 							<input placeholder={localize(stats.placeholder).toString()} type="text"
-								   value={followingCount} onChange={e => handleInput(e, setFollowingCount)} />
+								   value={followingCount}
+								   onBlur={e => onUnfocusedInput(e, setFollowingCount)}
+								   onChange={e => handleInput(e, setFollowingCount)} />
 							{localize(stats.following)}
 						</li>
 					</ul>
 				</div>
 				<div className={'constructorBlock--info'}>
-					<input id={'username'} placeholder={localize(info.username).toString()} type="text"
-						   value={usernameValue} onChange={e => handleInput(e, setUsernameValue)} />
-					{ category && <input placeholder={localize(info.category).toString()} id={'category'} type={"text"}
-										 value={categoryValue} onChange={e => handleInput(e, setCategoryValue)} /> }
+					<input id={'username'} type="text" value={usernameValue}
+						   placeholder={localize(info.username).toString()}
+						   onChange={e => handleInput(e, setUsernameValue)}
+					/>
+					{ category && <input id={'category'} type={"text"} value={categoryValue}
+										 placeholder={localize(info.category).toString()}
+										 onChange={e => handleInput(e, setCategoryValue)}
+					/> }
 
-					{ description && <textarea rows={1} placeholder={localize(constructorBlock.info.biography).toString()} id={'biography'}
-											   value={biographyValue} onChange={e => handleTextarea(e, setBiographyValue)} /> }
-					{ link && <input placeholder={localize(info.link).toString()} id={'url'} type="url"
-									 value={linkValue} onChange={e => handleInput(e, setLinkValue)} /> }
+					{ description && <textarea rows={1} id={'biography'} value={biographyValue}
+											   placeholder={localize(constructorBlock.info.biography).toString()}
+											   onChange={e => handleTextarea(e, setBiographyValue)}
+					/> }
+					{ link && <input value={linkValue} id={'url'} type="url"
+									 placeholder={localize(info.link).toString()}
+									 onChange={e => handleInput(e, setLinkValue)}
+					/> }
 				</div>
 				<div className={'constructorBlock--buttons'}>
 					{ market && <div className={'constructorBlock--buttonsItem constructorBlock--buttonsItem-market'}>
@@ -159,9 +186,17 @@ export const ConstructorBlock = ({ profileID }: ConstructorBlock) => {
 					</div>
 				</div> }
 				{ photos && <div className={'constructorBlock--gallery'}>
-					{ (getProfile(profileID)?.gallery || ["","","","","","","","","","","","","","",""]).map((source, index) => {
+					{ getProfile(profileID)?.gallery.map((source, index) => {
 						return <ConstructorGalleryItem key={index} profileID={profileID} id={index} source={source || ''}/>
 					}) }
+					<div id={'constructorBlock--new'} className={'constructorBlock--galleryItem'} >
+						<label>
+							<input type="file" multiple={true} onChange={createNewGalleryItem} accept=".jpg, .jpeg, .png" />
+							<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M12.3086 21.9453C13.0469 21.9453 13.6562 21.3359 13.6562 20.6445V13.3086H20.8047C21.5078 13.3086 22.1289 12.7109 22.1289 11.9727C22.1289 11.2461 21.5078 10.6367 20.8047 10.6367H13.6562V3.30078C13.6562 2.59766 13.0469 2 12.3086 2C11.582 2 10.9727 2.59766 10.9727 3.30078V10.6367H3.82422C3.13281 10.6367 2.5 11.2461 2.5 11.9727C2.5 12.7109 3.13281 13.3086 3.82422 13.3086H10.9727V20.6445C10.9727 21.3359 11.582 21.9453 12.3086 21.9453Z" fill="#959595"/>
+							</svg>
+						</label>
+					</div>
 				</div> }
 			</div>
         </div> }
