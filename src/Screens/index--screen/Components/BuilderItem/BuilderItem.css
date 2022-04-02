@@ -16,21 +16,25 @@
   line-height: 24px;
   font-weight: 600;
 }
-.builderItem--header button {
+.builderItem--header div {
+  position: relative;
+}
+.builderItem--header div button {
   height: 24px;
   width: 24px;
   background: none;
   border: none;
   cursor: pointer;
 }
-.builderItem--header button:not(:last-child) {
+.builderItem--header div button:not(:last-child) {
   margin-right: 8px;
 }
-.builderItem--header button svg {
+.builderItem--header div button svg {
   fill: #000000;
 }
 .builderItem--content {
   display: flex;
+  cursor: pointer;
   align-items: center;
 }
 .builderItem--content > div {
@@ -74,12 +78,52 @@
   color: #000000;
   font-size: 14px;
   line-height: 20px;
+  font-weight: normal;
 }
 .builderItem--content-empty {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 55%;
+}
+.builderItem--deleteOverlay {
+  transition: 0.1s ease-out;
+  position: absolute;
+  right: 56px;
+  top: 12px;
+  width: 177px;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: #F2F2F2;
+  list-style: none;
+}
+.builderItem--deleteOverlay-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.builderItem--deleteOverlay li button {
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+  display: block;
+}
+.builderItem--deleteOverlay li:first-child button {
+  display: block;
+  color: #EB5757;
+}
+.builderItem--deleteOverlay li:first-child::after {
+  content: " ";
+  width: calc(100% + 32px);
+  height: 1px;
+  margin-left: -16px;
+  display: block;
+  background: rgba(0, 0, 0, 0.2);
+  margin-top: 11px;
+  margin-bottom: 9px;
 }
 
 /*# sourceMappingURL=BuilderItem.css.map */

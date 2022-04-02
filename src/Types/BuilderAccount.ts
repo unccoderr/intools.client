@@ -4,6 +4,8 @@ export interface BuilderStoryItem {
 }
 
 export interface BuilderProfile {
+	is_subscribed: boolean,
+	is_contacted: boolean,
 	timestamp: Date,
     avatar_url: string,
 	posts_count: string,

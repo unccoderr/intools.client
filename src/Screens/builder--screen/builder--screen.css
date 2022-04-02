@@ -1,12 +1,12 @@
 .builderScreen {
   display: grid;
-  grid-template-columns: 48% 375px;
-  grid-column-gap: calc(100% - (375px + 48% + 2 * min(80px, 8%)));
+  grid-template-columns: 48% auto;
+  grid-column-gap: calc(100% - (399px + 48% + min(160px, 16%)));
   height: calc(100% - 80px);
   padding: 30px min(60px, 4%) 0;
 }
 .builderScreen > div:nth-child(2) {
-  margin: 64px 29% 0 0;
+  margin: 64px 0 0 0;
 }
 .builderScreen--header {
   display: flex;

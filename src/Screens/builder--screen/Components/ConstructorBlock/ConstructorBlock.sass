@@ -5,19 +5,20 @@
 $gallery-gap: 2px
 $galleryItem-height: 124px
 $galleryItem-width: 124px
+$phone-color: #4E5659
 
 .constructorBlock
-	min-width: 377px
-	border: 1px solid rgba(2, 13, 18, 0.7)
-	border-bottom: 0
+	width: 100%
+	height: calc(100vh - 174px)
+	background: #FFFFFF
+	border: 8px solid $phone-color
 	border-radius: 32px 32px 0 0
+	border-bottom: 0
 	overflow-y: auto
-	height: calc(100% - 64px)
+	overflow-x: hidden
 	&::-webkit-scrollbar
 		width: 0
-	background: #FFFFFF
-	& > div
-		background: #FFFFFF
+	
 	&--statusBar
 		padding: 14px 15px 0 29px
 		display: flex
@@ -49,8 +50,9 @@ $galleryItem-width: 124px
 		display: flex
 		align-items: center
 		&Avatar
+			min-width: 94px
+			min-height: 94px
 			border-radius: 50%
-			box-sizing: border-box
 			@include effects.inst(1)
 			& label
 				cursor: pointer
@@ -74,6 +76,14 @@ $galleryItem-width: 124px
 				background: colors.$surface-placeholder-light
 				& label
 					background: colors.$surface-placeholder-light
+			&-circle
+				& label
+					margin: 0
+					width: 94px
+					height: 94px
+					& > div
+						width: 100%
+						height: 100%
 		& ul
 			list-style: none
 			width: calc(100% - 78px)
@@ -84,6 +94,7 @@ $galleryItem-width: 124px
 				display: flex
 				flex-direction: column
 				@include typography.ConstructorBody1
+				font-weight: normal
 				& input
 					@include typography.ConstructorNumbers
 					border: 0
@@ -133,6 +144,7 @@ $galleryItem-width: 124px
 				&Two
 					grid-template-columns: 1fr 1fr
 		&Item
+			cursor: pointer
 			padding: 7px 0
 			border-radius: 3px
 			border: 0.7px solid colors.$buttons-outline-light
@@ -193,39 +205,75 @@ $galleryItem-width: 124px
 			align-items: center
 			justify-content: center
 			padding: 9px 0
-			border-bottom: 1px solid colors.$icons-main-light
+			border-bottom: 1px solid colors.$icons-secondary-light
 			&:nth-child(1)
 				& svg
-					stroke: colors.$icons-main-light
+					stroke: colors.$icons-secondary-light
 			&:nth-child(2)
 				& svg
-					fill: colors.$icons-main-light
+					fill: colors.$icons-secondary-light
 			&-active
-				border-bottom-color: colors.$icons-secondary-light
-				& svg
-					stroke: colors.$icons-secondary-light
+				&:nth-child(1)
+					border-bottom-color: colors.$icons-main-light
+					& svg
+						stroke: colors.$icons-main-light
+				&:nth-child(2)
+					border-bottom-color: colors.$icons-main-light
+					& svg
+						fill: colors.$icons-main-light
 	&--gallery
 		padding-top: 6px
 		display: grid
 		grid-template-columns: $galleryItem-width $galleryItem-width $galleryItem-width
 		grid-gap: $gallery-gap
 		&Item
-			min-width: $galleryItem-height
-			min-height: $galleryItem-width
+			width: $galleryItem-height
+			height: $galleryItem-width
 			& label
 				cursor: pointer
 				display: flex
 				align-items: center
 				justify-content: center
-				width: 100%
-				height: 100%
+				width: $galleryItem-height
+				height: $galleryItem-width
 				& div
 					display: flex
 					align-items: center
 					justify-content: center
 					background-position: center
 					background-size: cover
-					width: 100%
-					height: 100%
+					width: $galleryItem-height
+					height: $galleryItem-width
 				& input
 					display: none
+
+#constructorBlock
+	display: grid
+	grid-template-columns: 4px 391px 4px
+	overflow: hidden
+	height: calc(100% - 64px)
+	position: relative
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		left: calc(357px - 153px - calc(153px / 2))
+		height: 30px
+		width: 153px
+		background: $phone-color
+		border-radius: 0 0 17px 17px
+	& > div
+		&:nth-child(1)
+			padding-top: 160px
+			& div
+				background: $phone-color
+				height: 60px
+				width: 100%
+				border-radius: 12px 0 0 12px
+				&:nth-child(2)
+					margin-top: 14px
+		&:nth-child(3)
+			margin-top: 172px
+			background: $phone-color
+			height: 100px
+			border-radius: 0 12px 12px 0

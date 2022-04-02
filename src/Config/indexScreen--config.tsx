@@ -52,7 +52,11 @@ export const connectBlock = {
     button: {
         en: 'Add account',
         ru: 'Добавить аккаунт'
-    }
+    },
+	tooltip: {
+		en: 'We do not store your usernames and passwords from Instagram',
+		ru: 'Мы не храним ваши логины и пароли от Instagram'
+	}
 }
 
 export const greetingBlock = {

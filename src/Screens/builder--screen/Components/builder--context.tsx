@@ -32,6 +32,8 @@ interface ContextProps {
 	toggleHighlights?: Dispatch<SetStateAction<boolean>>,
 	photos: boolean,
 	togglePhotos?: Dispatch<SetStateAction<boolean>>,
+	storiesCircle: boolean,
+	toggleStoriesCircle?: Dispatch<SetStateAction<boolean>>,
 	usernameValue: string,
 	setUsernameValue?: Dispatch<SetStateAction<string>>,
 	categoryValue: string,
@@ -48,11 +50,16 @@ interface ContextProps {
 	setLinkValue?: Dispatch<SetStateAction<string>>,
 	avatarURL: string,
 	setAvatarURL?: Dispatch<SetStateAction<string>>,
+	isContacted: boolean,
+	setIsContacted?: Dispatch<SetStateAction<boolean>>,
+	isSubscribed: boolean,
+	setIsSubscribed?: Dispatch<SetStateAction<boolean>>,
 	resetProfile?: () => void,
 	exportProfile?: () => void,
 	removeProfile?: () => void
 }
 export const ProfileBuilderContext = createContext<ContextProps>({
+	storiesCircle: false,
 	stories: false,
 	famousIcon: false,
 	privateProfile: false,
@@ -70,7 +77,9 @@ export const ProfileBuilderContext = createContext<ContextProps>({
 	followersCount: '',
 	followingCount: '',
 	linkValue: '',
-	avatarURL: ''
+	avatarURL: '',
+	isSubscribed: false,
+	isContacted: false
 })
 
 interface ProfileBuilderContextProps {
@@ -88,6 +97,7 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 	const [contact, toggleContact] = useState(buttons.email_contact.initial)
 	const [highlights, toggleHighlights] = useState(content.highlights.initial)
 	const [photos, togglePhotos] = useState(content.photos.initial)
+	const [storiesCircle, toggleStoriesCircle] = useState(content.photos.initial)
 	const [usernameValue, setUsernameValue] = useState('')
 	const [categoryValue, setCategoryValue] = useState('')
 	const [biographyValue, setBiographyValue] = useState('')
@@ -96,6 +106,8 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 	const [followersCount, setFollowersCount] = useState('')
 	const [followingCount, setFollowingCount] = useState('')
 	const [avatarURL, setAvatarURL] = useState('')
+	const [isContacted, setIsContacted] = useState(false)
+	const [isSubscribed, setIsSubscribed] = useState(false)
 
 	const navigate = useNavigate()
 	const { language } = useContext(AppContext)
@@ -127,6 +139,8 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 		if (getProfile(profileID)) {
 			const profile = getProfile(profileID)
 			updateProfile(profileID, {
+				is_contacted: false,
+				is_subscribed: false,
 				timestamp: profile.timestamp,
 				avatar_url: '',
 				posts_count: '',
@@ -156,28 +170,32 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 
 	}
 	const exportProfile = () => {
-		const imageBlock = document.querySelector('#constructorBlock')
+		const imageBlock = document.querySelector('#constructorBlock') as HTMLElement
+		const constructorBlock = document.querySelector('.constructorBlock') as HTMLElement
+		const noexportElements = document.querySelectorAll('#no-export')
 
-		const createNewImageBlock = document.querySelector('#constructorBlock--new') as HTMLElement
-		createNewImageBlock.style.display = 'none'
-
-		const emptyStoriesItems = document.querySelectorAll('#constructorBlock--emptyStoryIcon')
-		emptyStoriesItems.forEach((emptyStory: any) => {
+		constructorBlock.style.overflowY = 'hidden'
+		constructorBlock.style.borderRadius = '32px'
+		constructorBlock.style.borderBottom = '8px solid #4E5659'
+		noexportElements.forEach((emptyStory: any) => {
 			emptyStory.style.display = 'none'
 		})
 
-		const img = imageBlock as HTMLElement
-		toPng(img, {
-			width: 375,
+		toPng(imageBlock, {
+			width: 399,
 			height: 1000,
 		})
 			.then(dataBase64 => require("downloadjs")(dataBase64, usernameValue || localize(header).toString(), 'png'))
 			.catch(console.error)
+			.finally(() => {
+				constructorBlock.style.overflowY = 'auto'
+				constructorBlock.style.borderRadius = '32px 32px 0 0'
+				constructorBlock.style.borderBottomWidth = '0'
+				noexportElements.forEach((emptyStory: any) => {
+					emptyStory.style.display = 'block'
+				})
+			})
 
-		createNewImageBlock.style.display = 'block'
-		emptyStoriesItems.forEach((emptyStory: any) => {
-			emptyStory.style.display = 'block'
-		})
 	}
 
 	useEffect(() => {
@@ -191,8 +209,12 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 			if (setCategoryValue) setCategoryValue(builderProfile.category)
 			if (setBiographyValue) setBiographyValue(builderProfile.biography)
 			if (setLinkValue) setLinkValue(builderProfile.external_url)
+			if (setIsSubscribed) setIsSubscribed(builderProfile.is_subscribed)
+			if (setIsContacted) setIsContacted(builderProfile.is_contacted)
 		} else {
 			createProfile({
+				is_contacted: false,
+				is_subscribed: false,
 				timestamp: new Date(),
 				avatar_url: '',
 				posts_count: postsCount,
@@ -218,6 +240,8 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 		if (!getProfile(+profileID)) return
 		const profile = getProfile(profileID)
 		updateProfile(+profileID, {
+			is_contacted: isContacted,
+			is_subscribed: isSubscribed,
 			timestamp: profile.timestamp,
 			avatar_url: avatarURL,
 			posts_count: postsCount,
@@ -230,7 +254,7 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 			stories: getProfile(+profileID).stories,
 			gallery: getProfile(+profileID).gallery,
 		})
-	}, [usernameValue, categoryValue, biographyValue, linkValue, postsCount, followersCount, followingCount, avatarURL])
+	}, [usernameValue, categoryValue, biographyValue, linkValue, postsCount, followersCount, followingCount, avatarURL, isContacted, isSubscribed])
 
 	return <ProfileBuilderContext.Provider value={{
 		stories, toggleStories,
@@ -243,6 +267,7 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 		contact, toggleContact,
 		highlights, toggleHighlights,
 		photos, togglePhotos,
+		storiesCircle, toggleStoriesCircle,
 		usernameValue, setUsernameValue,
 		categoryValue, setCategoryValue,
 		biographyValue, setBiographyValue,
@@ -251,6 +276,8 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 		followersCount, setFollowersCount,
 		followingCount, setFollowingCount,
 		avatarURL, setAvatarURL,
+		isContacted, setIsContacted,
+		isSubscribed, setIsSubscribed,
 		removeProfile, exportProfile, resetProfile
 	}}>
 		{children}

@@ -39,7 +39,9 @@ export const SwitchList = ({ className }: SwitchListProps) => {
                 <h2>{localize(content.title)}</h2>
                 <SwitchInput value={profileBuilderContext.highlights} setValue={profileBuilderContext.toggleHighlights} label={localize(content.highlights)}/>
                 <SwitchInput value={profileBuilderContext.photos} setValue={profileBuilderContext.togglePhotos} label={localize(content.photos)}/>
-            </div>
+				<SwitchInput value={profileBuilderContext.storiesCircle} setValue={profileBuilderContext.toggleStoriesCircle} label={localize(content.stories_circle)}/>
+
+			</div>
         </div> }
     </ProfileBuilderContext.Consumer>
 }

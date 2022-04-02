@@ -12,18 +12,22 @@
 		padding: 0 5px 8px 0
 		& h3
 			@include typography.Header
-		& button
-			height: 24px
-			width: 24px
-			background: none
-			border: none
-			cursor: pointer
-			&:not(:last-child)
-				margin-right: 8px
-			& svg
-				fill: colors.$icons-main-light
+		& div
+			position: relative
+			& button
+				height: 24px
+				width: 24px
+				background: none
+				border: none
+				cursor: pointer
+				&:not(:last-child)
+					margin-right: 8px
+				& svg
+					fill: colors.$icons-main-light
+			
 	&--content
 		display: flex
+		cursor: pointer
 		align-items: center
 		& > div
 			background: colors.$effect-inst1-light
@@ -55,8 +59,42 @@
 				@include typography.Header
 				& span
 					@include typography.Body2
+					font-weight: normal
 		&-empty
 			display: flex
 			align-items: center
 			justify-content: center
 			padding-top: 55%
+	&--deleteOverlay
+		transition: .1s ease-out
+		position: absolute
+		right: 56px
+		top: 12px
+		width: 177px
+		padding: 11px 16px
+		border-radius: 12px
+		background: #F2F2F2
+		list-style: none
+		&-hidden
+			opacity: 0
+			visibility: hidden
+		& li
+			& button
+				@include typography.Body1
+				text-align: left
+				width: 100%
+				display: block
+			&:first-child
+				& button
+					display: block
+					color: colors.$text-negative-light
+				&::after
+					content: ' '
+					width: calc(100% + 32px)
+					height: 1px
+					margin-left: -16px
+					display: block
+					background: rgba(0, 0, 0, 0.2)
+					margin-top: 11px
+					margin-bottom: 9px
+			

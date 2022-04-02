@@ -1,17 +1,15 @@
 .constructorBlock {
-  min-width: 377px;
-  border: 1px solid rgba(2, 13, 18, 0.7);
-  border-bottom: 0;
-  border-radius: 32px 32px 0 0;
-  overflow-y: auto;
-  height: calc(100% - 64px);
+  width: 100%;
+  height: calc(100vh - 174px);
   background: #FFFFFF;
+  border: 8px solid #4E5659;
+  border-radius: 32px 32px 0 0;
+  border-bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .constructorBlock::-webkit-scrollbar {
   width: 0;
-}
-.constructorBlock > div {
-  background: #FFFFFF;
 }
 .constructorBlock--statusBar {
   padding: 14px 15px 0 29px;
@@ -59,8 +57,9 @@
   align-items: center;
 }
 .constructorBlock--statsAvatar {
+  min-width: 94px;
+  min-height: 94px;
   border-radius: 50%;
-  box-sizing: border-box;
   background: linear-gradient(180deg, #DE0046 0%, #F7A34B 100%);
 }
 .constructorBlock--statsAvatar label {
@@ -90,6 +89,15 @@
 .constructorBlock--statsAvatar-empty label {
   background: #F2F2F2;
 }
+.constructorBlock--statsAvatar-circle label {
+  margin: 0;
+  width: 94px;
+  height: 94px;
+}
+.constructorBlock--statsAvatar-circle label > div {
+  width: 100%;
+  height: 100%;
+}
 .constructorBlock--stats ul {
   list-style: none;
   width: calc(100% - 78px);
@@ -104,6 +112,7 @@
   color: #000000;
   font-size: 13px;
   font-weight: bold;
+  font-weight: normal;
 }
 .constructorBlock--stats ul li input {
   font-family: "SF Pro Display", sans-serif;
@@ -187,6 +196,7 @@
   grid-template-columns: 1fr 1fr;
 }
 .constructorBlock--buttonsItem {
+  cursor: pointer;
   padding: 7px 0;
   border-radius: 3px;
   border: 0.7px solid #EFEFEF;
@@ -262,19 +272,25 @@
   align-items: center;
   justify-content: center;
   padding: 9px 0;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #959595;
 }
 .constructorBlock--iconsItem:nth-child(1) svg {
-  stroke: #000000;
+  stroke: #959595;
 }
 .constructorBlock--iconsItem:nth-child(2) svg {
+  fill: #959595;
+}
+.constructorBlock--iconsItem-active:nth-child(1) {
+  border-bottom-color: #000000;
+}
+.constructorBlock--iconsItem-active:nth-child(1) svg {
+  stroke: #000000;
+}
+.constructorBlock--iconsItem-active:nth-child(2) {
+  border-bottom-color: #000000;
+}
+.constructorBlock--iconsItem-active:nth-child(2) svg {
   fill: #000000;
-}
-.constructorBlock--iconsItem-active {
-  border-bottom-color: #959595;
-}
-.constructorBlock--iconsItem-active svg {
-  stroke: #959595;
 }
 .constructorBlock--gallery {
   padding-top: 6px;
@@ -283,16 +299,16 @@
   grid-gap: 2px;
 }
 .constructorBlock--galleryItem {
-  min-width: 124px;
-  min-height: 124px;
+  width: 124px;
+  height: 124px;
 }
 .constructorBlock--galleryItem label {
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 124px;
+  height: 124px;
 }
 .constructorBlock--galleryItem label div {
   display: flex;
@@ -300,11 +316,47 @@
   justify-content: center;
   background-position: center;
   background-size: cover;
-  width: 100%;
-  height: 100%;
+  width: 124px;
+  height: 124px;
 }
 .constructorBlock--galleryItem label input {
   display: none;
+}
+
+#constructorBlock {
+  display: grid;
+  grid-template-columns: 4px 391px 4px;
+  overflow: hidden;
+  height: calc(100% - 64px);
+  position: relative;
+}
+#constructorBlock::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 127.5px;
+  height: 30px;
+  width: 153px;
+  background: #4E5659;
+  border-radius: 0 0 17px 17px;
+}
+#constructorBlock > div:nth-child(1) {
+  padding-top: 160px;
+}
+#constructorBlock > div:nth-child(1) div {
+  background: #4E5659;
+  height: 60px;
+  width: 100%;
+  border-radius: 12px 0 0 12px;
+}
+#constructorBlock > div:nth-child(1) div:nth-child(2) {
+  margin-top: 14px;
+}
+#constructorBlock > div:nth-child(3) {
+  margin-top: 172px;
+  background: #4E5659;
+  height: 100px;
+  border-radius: 0 12px 12px 0;
 }
 
 /*# sourceMappingURL=ConstructorBlock.css.map */

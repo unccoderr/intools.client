@@ -24,6 +24,7 @@
   font-weight: 600;
 }
 .postItem--text h4 svg {
+  cursor: pointer;
   margin-left: 4px;
 }
 .postItem--text h4 svg path {

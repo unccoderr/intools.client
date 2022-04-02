@@ -76,7 +76,12 @@ export const switchList = {
             en: 'Photos',
             ru: 'Фотографии',
             initial: true,
-        }
+        },
+		stories_circle: {
+			en: 'Stories circle',
+			ru: 'Кружок сторис',
+			initial: false,
+		}
     },
 }
 
@@ -147,16 +152,28 @@ export const constructorBlock = {
 			ru: 'Открыть магазин'
 		},
 		follow: {
-			en: 'Follow',
-			ru: 'Подписаться'
+			before: {
+				en: 'Follow',
+				ru: 'Подписаться'
+			},
+			after: {
+				en: 'Followed',
+				ru: 'Вы подписаны'
+			},
 		},
 		message: {
 			en: 'Message',
 			ru: 'Написать'
 		},
 		email: {
-			en: 'Email',
-			ru: 'Почта'
+			before: {
+				en: 'Email',
+				ru: 'Email'
+			},
+			after: {
+				en: 'Contact',
+				ru: 'Контакты'
+			}
 		},
 	},
 	stories_empty_label: {

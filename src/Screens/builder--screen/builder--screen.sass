@@ -3,12 +3,12 @@
 
 .builderScreen
 	display: grid
-	grid-template-columns: 48% 375px
-	grid-column-gap: calc(100% - calc(375px + calc(48% + calc(2 * min(80px, 8%)))))
+	grid-template-columns: 48% auto
+	grid-column-gap: calc(100% - calc(399px + calc(48% + min(160px, 16%))))
 	height: calc(100% - 80px)
 	padding: 30px min(60px, 4%) 0
 	& > div:nth-child(2)
-		margin: 64px 29% 0 0
+		margin: 64px 0 0 0
 	&--header
 		display: flex
 		align-items: center

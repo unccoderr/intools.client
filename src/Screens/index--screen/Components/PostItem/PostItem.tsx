@@ -35,6 +35,7 @@ export const PostItem = ({ className, post }: PostItemProps) => {
             }
         }
     }
+
     return <div className={`postItem${className ? ` ${className}` : ''}`}>
         <div className={'postItem--image'} style={{ backgroundImage: `url(${post.image_url})`}} />
         <div className={'postItem--text'}>
