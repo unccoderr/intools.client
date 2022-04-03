@@ -31,17 +31,17 @@ export const PostsList = ({ className }: PostsListProps) => {
     const [tab, setTab] = useState(PostTabType.ALL)
 	const [posts, setPosts] = useState<PostSection[ ]>([])
 
-	const openPlanner = () => {
-		if (setOpenPlannerModal) setOpenPlannerModal(true)
-	}
 	const getSectionHeader = (date: Date) => {
-		const timestamp = date//
-		console.log({ date, timestamp: new Date(Date.parse(date.toString())) })
+		const timestamp = moment(date, "mm/dd/yyyy hh:mm:ss").toDate()
+		console.log({ date, date_valid: moment(date).isValid(), timestamp, timestamp_valid: moment(timestamp).isValid() })
 		const month = timestamp.getMonth().toString().length === 1
 			? '0' + timestamp.getMonth()
 			: timestamp.getMonth()
 		if (timestamp.getDate() === new Date().getDate()) return localize(today)
 		else return `${localize(at)}${timestamp.getDate()}.${month}.${timestamp.getFullYear()}`
+	}
+	const openPlanner = () => {
+		if (setOpenPlannerModal) setOpenPlannerModal(true)
 	}
 
 	const hasPosts = posts.length > 0
