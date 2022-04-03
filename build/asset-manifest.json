@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.58092f02.css",
+    "main.js": "/static/js/main.f14ded53.js",
+    "static/media/SF-Pro-Display-Semibold.otf": "/static/media/SF-Pro-Display-Semibold.f50e0151c241f0e9d573.otf",
+    "static/media/SF-Pro-Text-Semibold.otf": "/static/media/SF-Pro-Text-Semibold.e16deadd9dc50f769f31.otf",
+    "static/media/SF-Pro-Text-Medium.otf": "/static/media/SF-Pro-Text-Medium.eec811a8c90a516708ea.otf",
+    "static/media/SF-Pro-Text-Bold.otf": "/static/media/SF-Pro-Text-Bold.f321f7b8a04248a4394c.otf",
+    "static/media/SF-Pro-Text-Regular.otf": "/static/media/SF-Pro-Text-Regular.ba21d41dbb34b2e04643.otf",
+    "static/media/SF-Pro-Display-Medium.otf": "/static/media/SF-Pro-Display-Medium.b85d841dacb040b84951.otf",
+    "static/media/SF-Pro-Display-Bold.otf": "/static/media/SF-Pro-Display-Bold.b1f4d2c69fa808ebca12.otf",
+    "static/media/SF-Pro-Display-Regular.otf": "/static/media/SF-Pro-Display-Regular.d1f5e6e16dd4f75c3950.otf",
+    "static/media/HandIcon.png": "/static/media/HandIcon.fe01c3d0c09cd5a115d2.png",
+    "static/media/WelcomePreview.png": "/static/media/WelcomePreview.51253885bd0d1abc25b5.png",
+    "static/media/SubscriptionIllustration.png": "/static/media/SubscriptionIllustration.20b4281be7efe6f82c62.png",
+    "static/media/CalendarIcon.png": "/static/media/CalendarIcon.a6f1e69be4fd5a4d4cea.png",
+    "static/media/BuilderStepperIllustration-1.png": "/static/media/BuilderStepperIllustration-1.5e1d7236ef2666dea50c.png",
+    "static/media/fee-input-selected.svg": "/static/media/fee-input-selected.83c89c7c56b85165d137.svg",
+    "static/media/list-style-icon.svg": "/static/media/list-style-icon.169c3a6c022dcde5b288.svg",
+    "index.html": "/index.html",
+    "static/media/fee-input.svg": "/static/media/fee-input.070c97084513bc6abc66.svg",
+    "main.58092f02.css.map": "/static/css/main.58092f02.css.map",
+    "main.f14ded53.js.map": "/static/js/main.f14ded53.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58092f02.css",
+    "static/js/main.f14ded53.js"
+  ]
+}
