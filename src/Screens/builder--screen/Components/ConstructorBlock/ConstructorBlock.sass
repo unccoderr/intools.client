@@ -73,10 +73,17 @@ $phone-color: #4E5659
 					min-width: 80px
 					min-height: 80px
 			&-empty
-				background: colors.$surface-placeholder-light
 				& label
-					background: colors.$surface-placeholder-light
-			&-circle
+					background: #FFFFFF
+					& > div
+						width: 80px
+						height: 80px
+						display: flex
+						align-items: center
+						justify-content: center
+						background: colors.$surface-placeholder-light
+			&-nocircle
+				background: colors.$surface-placeholder-light
 				& label
 					margin: 0
 					width: 94px
@@ -201,6 +208,7 @@ $phone-color: #4E5659
 		grid-template-columns: 1fr 1fr
 		padding-top: 4px
 		&Item
+			transition: .1s ease-out
 			display: flex
 			align-items: center
 			justify-content: center
@@ -229,6 +237,7 @@ $phone-color: #4E5659
 		&Item
 			width: $galleryItem-height
 			height: $galleryItem-width
+			background: colors.$surface-placeholder-light
 			& label
 				cursor: pointer
 				display: flex
