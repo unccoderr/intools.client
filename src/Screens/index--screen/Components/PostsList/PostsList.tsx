@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { useLocalization, usePostsData } from "../../../../Hooks"
+import moment from "moment"
 
 import { AppContext } from "../../../../app"
 import { PostItem } from "../PostItem/PostItem"
@@ -34,8 +35,8 @@ export const PostsList = ({ className }: PostsListProps) => {
 		if (setOpenPlannerModal) setOpenPlannerModal(true)
 	}
 	const getSectionHeader = (date: Date) => {
-		const timestamp = new Date(date.toString())
-		console.log({ date, timestamp, y: timestamp.getFullYear(), m: timestamp.getMonth(), d: timestamp.getDate() })
+		const timestamp = date//
+		console.log({ date, timestamp: new Date(Date.parse(date.toString())) })
 		const month = timestamp.getMonth().toString().length === 1
 			? '0' + timestamp.getMonth()
 			: timestamp.getMonth()
