@@ -34,9 +34,13 @@ export const PostsList = ({ className }: PostsListProps) => {
 		if (setOpenPlannerModal) setOpenPlannerModal(true)
 	}
 	const getSectionHeader = (date: Date) => {
-		const timestamp = new Date(date)
+		const timestamp = new Date(date.toString())
+		console.log({ date, timestamp, y: timestamp.getFullYear(), m: timestamp.getMonth(), d: timestamp.getDate() })
+		const month = timestamp.getMonth().toString().length === 1
+			? '0' + timestamp.getMonth()
+			: timestamp.getMonth()
 		if (timestamp.getDate() === new Date().getDate()) return localize(today)
-		else return `${localize(at)}${timestamp.getDate()}.${timestamp.getMonth()}.${timestamp.getFullYear()}`
+		else return `${localize(at)}${timestamp.getDate()}.${month}.${timestamp.getFullYear()}`
 	}
 
 	const hasPosts = posts.length > 0
