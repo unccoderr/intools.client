@@ -32,7 +32,7 @@ export const PostsList = ({ className }: PostsListProps) => {
 	const [posts, setPosts] = useState<PostSection[ ]>([])
 
 	const getSectionHeader = (date: Date) => {
-		const timestamp = moment(date, "mm/dd/yyyy hh:mm:ss").toDate()
+		const timestamp = new Date(moment(date, 'YYYY-mm-dd hh:mm:ss').toISOString().replace(/\s/, 'T'))
 		console.log({ date, date_valid: moment(date).isValid(), timestamp, timestamp_valid: moment(timestamp).isValid() })
 		const month = timestamp.getMonth().toString().length === 1
 			? '0' + timestamp.getMonth()
