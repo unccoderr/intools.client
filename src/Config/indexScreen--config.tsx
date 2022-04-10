@@ -238,6 +238,10 @@ export const plannerModal = {
 		schedule: {
 			en: 'Post on schedule',
 			ru: 'Отложить публикацию'
+		},
+		edit: {
+			en: 'Edit post',
+			ru: 'Изменить публикацию'
 		}
 	}
 }

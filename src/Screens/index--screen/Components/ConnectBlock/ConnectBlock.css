@@ -8,7 +8,7 @@
 }
 .connectBlock--icon {
   height: 64px;
-  min-width: 64px;
+  width: 64px;
 }
 .connectBlock--wrapper {
   padding-left: 16px;

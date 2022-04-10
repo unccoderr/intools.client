@@ -11,12 +11,12 @@ import { ModalWrapper } from "../ModalWrapper"
 import './PlannerModal.css'
 
 import { plannerModal } from '../../../Config'
-const { description_input, location_input, button, date_input, schedule_toggle } = plannerModal
+const { description_input, location_input, button, date_input, schedule_toggle} = plannerModal
 
 export const PlannerModal = () => {
-	const { setOpenPlannerModal, openPlannerModal, language} = useContext(AppContext)
+	const { setOpenPlannerModal, setPlannerPost, openPlannerModal, language, plannerPost } = useContext(AppContext)
 	const { localize } = new useLocalization(language)
-	const { createPost } = usePostsData
+	const { createPost, updatePost } = usePostsData
 	const [description, setDescription] = useState(localize(description_input.placeholder).toString())
 	const [src, setSrc] = useState('')
 	const [location, setLocation] = useState('')
@@ -25,27 +25,26 @@ export const PlannerModal = () => {
 
 	const hideModal = (e: MouseEvent) => {
 		e.preventDefault()
+		if (setPlannerPost) setPlannerPost(null)
 		if (setOpenPlannerModal) setOpenPlannerModal(false)
 	}
-
 	const createNewPost = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
-		let timestamp = new Date()
-		if (date) timestamp = new Date(date)
+		let timestamp = date ? new Date(date) : new Date()
+		console.log(timestamp)
 		const post: IPost = {
 			timestamp,
 			description,
 			image_url: src,
 			id: description + new Date().toString()
 		}
-		createPost(schedule ? 'scheduled' : 'published', post)
+		createPost(post)
 		if (setOpenPlannerModal) setOpenPlannerModal(false)
 	}
 
 	useEffect(() => {
 		const textarea = document.querySelector('textarea')
-		if (!textarea) return
-		textarea.addEventListener('resize', () => {
+		if (textarea) textarea.addEventListener('resize', () => {
 			textarea.style.height = 'auto'
 			textarea.style.height = `${textarea.scrollHeight}px`
 		})
@@ -53,13 +52,36 @@ export const PlannerModal = () => {
 	useEffect(() => {
 		if (openPlannerModal) return
 		setSrc('')
-		setDescription('')
+		setDescription(localize(description_input.placeholder).toString())
 		setLocation('')
 		setDate('')
 		toggleSchedule(false)
+		if (setOpenPlannerModal) setOpenPlannerModal(false)
 	}, [openPlannerModal])
+	useEffect(() => {
+		if (!plannerPost) return
+		setSrc(plannerPost.image_url)
+		setDescription(plannerPost.description)
+		setLocation('')
+		setDate(plannerPost.timestamp.toString())
+		toggleSchedule(false)
+	}, [plannerPost])
 
-	const enableButton = schedule ? (description !== '' && date !== '' && src !== '') : (description !== '' && src !== '')
+	useEffect(() => {
+		if (isNew) return
+		const post: IPost = {
+			image_url: src,
+			description: description,
+			timestamp: new Date(date),
+			id: plannerPost.id
+		}
+		updatePost(plannerPost.id, post)
+	}, [src, location, date, description])
+
+	const isNew = plannerPost === null
+	const enableButton = schedule
+		? (description !== '' && date !== '' && src !== '')
+		: (description !== '' && src !== '')
 
 	return <ModalWrapper modal={openPlannerModal} hideModal={hideModal}>
 		<form className={'plannerModal'}>
@@ -79,14 +101,12 @@ export const PlannerModal = () => {
 				<div className={'plannerModal--formWrapper'}>
 					<InputField placeholder={localize(description_input.label).toString()} type={'textarea'} value={description} onChange={setDescription}/>
 					<InputField placeholder={localize(location_input).toString()} type={'text'} value={location} onChange={setLocation}/>
-					<SwitchInput label={localize(schedule_toggle).toString()} value={schedule} setValue={toggleSchedule}/>
-					{ schedule && <InputField placeholder={localize(date_input).toString()} type={'datetime-local'} value={date} onChange={setDate}/> }
+					<SwitchInput label={localize(schedule_toggle).toString()} value={isNew ? schedule : true} setValue={toggleSchedule}/>
+					{ (!isNew || schedule) && <InputField placeholder={localize(date_input).toString()} type={'datetime-local'} value={date} onChange={setDate}/> }
 				</div>
-				<button className={`plannerModal--formButton ${schedule ? 'plannerModal--formButton-schedule' : ''}`}
-						onClick={createNewPost} disabled={!enableButton}
-				>
-					{schedule ? localize(button.schedule) : localize(button.post)}
-				</button>
+				{ isNew && <button className={`plannerModal--formButton ${schedule ? 'plannerModal--formButton-schedule' : ''}`} onClick={createNewPost} disabled={!enableButton}>
+					{ schedule ? localize(button.schedule) : localize(button.post) }
+				</button> }
 			</div>
 			<button className={'plannerModal--exit'} onClick={hideModal}>
 				<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">

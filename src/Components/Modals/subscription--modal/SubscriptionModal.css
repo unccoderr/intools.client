@@ -134,9 +134,8 @@
   border: 0;
   background: transparent;
   border-radius: 12px;
-  padding: 16px 0;
+  padding: 16px 18px;
   text-align: center;
-  width: 38%;
   margin-right: 5%;
   font-family: "SF Pro Text", sans-serif;
   color: #FFFFFF;
@@ -149,6 +148,7 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
+  font-weight: normal;
   background: linear-gradient(95.11deg, #0099E6 4.16%, #791CCD 96.87%);
 }
 

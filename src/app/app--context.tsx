@@ -1,6 +1,6 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react"
 
-import { ILanguageType, IThemeType, IUser } from "../Types"
+import { ILanguageType, IPost, IThemeType, IUser } from "../Types"
 
 import { subscriptionModal, DATA_KEYS } from "../Config"
 const { show_by_delay, delay } = subscriptionModal
@@ -35,6 +35,8 @@ interface AppContextProps {
 	openSubscriptionModal: boolean,
 	setOpenSubscriptionModal?: Dispatch<SetStateAction<boolean>>,
 	openPlannerModal: boolean,
+	plannerPost: IPost | null,
+	setPlannerPost?: Dispatch<SetStateAction<IPost | null>>,
 	setOpenPlannerModal?: Dispatch<SetStateAction<boolean>>,
 	statsModalType: IStatsType,
 	setStatsModalType?: Dispatch<SetStateAction<IStatsType>>,
@@ -42,6 +44,7 @@ interface AppContextProps {
 	setOpenBuilderModal?: Dispatch<SetStateAction<boolean>>,
 }
 export const AppContext = createContext<AppContextProps>({
+	plannerPost: null,
 	theme: IThemeType.LIGHT,
 	language: ILanguageType.EN,
 	user: null,
@@ -62,6 +65,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
 	const [openPlannerModal, setOpenPlannerModal] = useState(false)
 	const [statsModalType, setStatsModalType] = useState(IStatsType.NONE)
 	const [openBuilderModal, setOpenBuilderModal] = useState(false)
+	const [plannerPost, setPlannerPost] = useState<IPost | null>(null)
 
 	useEffect(() => {
 		if (!show_by_delay) return
@@ -77,6 +81,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
 		user, setUser,
 		openSubscriptionModal, setOpenSubscriptionModal,
 		openPlannerModal, setOpenPlannerModal,
+		plannerPost, setPlannerPost,
 		statsModalType, setStatsModalType,
 		openBuilderModal, setOpenBuilderModal
 	}}>

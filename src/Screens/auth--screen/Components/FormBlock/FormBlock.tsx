@@ -45,6 +45,7 @@ export const FormBlock = ({ className, type }: FormBlockProps) => {
 				</svg>
 			</button>
 		</div>
+
 		<InputField placeholder={localize(email_placeholder).toString()} type={'email'} value={email} onChange={setEmail}/>
 		<InputField placeholder={localize(password_placeholder).toString()} type={'password'} value={password} onChange={setPassword}/>
 		<div className={'formBlock--buttons'}>

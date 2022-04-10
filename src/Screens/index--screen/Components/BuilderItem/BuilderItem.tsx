@@ -15,7 +15,7 @@ interface BuilderItemProps {
     builderProfile: BuilderProfile
 }
 export const BuilderItem = ({ className, builderProfile }: BuilderItemProps) => {
-	const { username, posts_count, followers_count, following_count, avatar_url, timestamp } = builderProfile
+	const { profilename, posts_count, followers_count, following_count, avatar_url, timestamp } = builderProfile
 	const { language } = useContext(AppContext)
 	const { localize } = new useLocalization(language)
 	const { getProfileID, deleteProfile } = useBuilderProfilesData
@@ -38,7 +38,7 @@ export const BuilderItem = ({ className, builderProfile }: BuilderItemProps) => 
 
 	return <div className={`builderItem${className ? ` ${className}` : ''}`}>
         <div className="builderItem--header">
-            <h3>{username || localize(header)}</h3>
+            <h3>{profilename || localize(header)}</h3>
 			<div>
 				<ul data-modal={true} className={`builderItem--deleteOverlay${!showOverlay ? ' builderItem--deleteOverlay-hidden' : ''}`}>
 					<li data-modal={true}>

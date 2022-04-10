@@ -6,6 +6,7 @@
   list-style: none;
 }
 .statsBlock--item {
+  cursor: pointer;
   padding: 16px;
   border-radius: 24px;
   font-family: "SF Pro Display", sans-serif;

@@ -11,6 +11,7 @@ export interface BuilderProfile {
 	posts_count: string,
 	followers_count: string,
 	following_count: string,
+	profilename: string,
 	username: string,
 	category: string,
 	biography: string,

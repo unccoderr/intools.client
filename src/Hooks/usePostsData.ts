@@ -1,10 +1,15 @@
 import { IPost } from "../Types"
+export interface PostSection {
+	date: Date,
+	posts: IPost[]
+}
 
 const postsKey = 'posts-list'
 
 const setPostsList = (posts: IPost[]) => {
 	localStorage.setItem(postsKey, JSON.stringify(posts))
 }
+
 const getPostsList = (type: 'published' | 'scheduled' | 'all') => {
 	if (!localStorage.getItem(postsKey)) return []
 
@@ -19,32 +24,53 @@ const getPostsList = (type: 'published' | 'scheduled' | 'all') => {
 	return postsList.reverse()
 }
 const getPostObject = (postsList: IPost[]) => {
-	const getPostDate = (post: IPost) => {
-		const timestamp = new Date(post.timestamp)
-		return timestamp.getMonth() + 1 + '.' + timestamp.getDate() + '.' + timestamp.getFullYear()
-	}
-
 	const postsObj: { [key: string]: IPost[] } = {}
 	postsList.forEach(post => {
-		if (!postsObj[getPostDate(post)]) postsObj[getPostDate(post)] = [post]
-		else postsObj[getPostDate(post)].push(post)
+		const postDate = new Date(post.timestamp)
+		const month = postDate.getMonth().toString().length === 2
+			? postDate.getMonth()
+			: '0' + postDate.getMonth()
+		const date = postDate.getDate().toString().length === 2
+			? postDate.getDate()
+			: '0' + postDate.getDate()
+		const postDateKey = `${postDate.getFullYear()}-${month}-${date}T00:00:00.000Z`
+		if (!postsObj[postDateKey]) postsObj[postDateKey] = [post]//2022-04-10T00:00:00.000Z
+		else postsObj[postDateKey].push(post)
 	})
-
-	return postsObj
+	const sections: PostSection[] = []
+	for (const dateKey in postsObj) {
+		//console.log(dateKey)
+		const postSection: PostSection = {
+			date: new Date(dateKey),
+			posts: postsObj[dateKey]
+		}
+		sections.push(postSection)
+	}
+	return sections
 }
-const createPost = (type: `published` | 'scheduled', post: IPost) => {
+
+const updatePost = (id: string, post: IPost) => {
+	const posts = getPostsList('all')
+	if (!posts) return
+	const index = posts.findIndex(post => post.id === id)
+	if (index === -1) return
+	posts[index] = post
+	setPostsList(posts)
+}
+
+const createPost = (post: IPost) => {
 	let posts: IPost[] = getPostsList('all')
 	posts.push(post)
 	setPostsList(posts)
 }
-const getPost = (timestamp: Date) => {
+const getPost = (id: string) => {
 	let posts: IPost[] = getPostsList('all')
-	console.log(posts, timestamp)
-	return posts.find(post => post.timestamp === timestamp)
+	return posts.find(post => post.id === id)
 }
 
 export const usePostsData = {
 	setPostsList,
+	updatePost,
 	getPost, getPostsList,
 	getPostObject,
 	createPost,

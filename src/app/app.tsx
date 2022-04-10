@@ -6,13 +6,13 @@ import { SubscriptionModal, PlannerModal, StatsModal, BuilderModal } from "../Co
 import { IndexRouter } from "../Routing"
 
 export const App = () => {
-	return <AppContextProvider>
-		<BrowserRouter>
+	return <BrowserRouter>
+		<AppContextProvider>
 			<BuilderModal/>
 			<StatsModal/>
 			<PlannerModal/>
 			<SubscriptionModal/>
-            <IndexRouter/>
-        </BrowserRouter>
-    </AppContextProvider>
+			<IndexRouter/>
+		</AppContextProvider>
+	</BrowserRouter>
 }

@@ -3,6 +3,9 @@
   display: flex;
   align-items: center;
 }
+.postItem-scheduled {
+  cursor: pointer;
+}
 .postItem--image {
   background: #F2F2F2 center;
   min-width: 96px;
@@ -10,6 +13,9 @@
   aspect-ratio: 1;
   border-radius: 12px;
   background-size: cover;
+}
+.postItem--image-scheduled {
+  cursor: pointer;
 }
 .postItem--text {
   margin-left: 12px;
@@ -24,11 +30,13 @@
   font-weight: 600;
 }
 .postItem--text h4 svg {
-  cursor: pointer;
   margin-left: 4px;
 }
 .postItem--text h4 svg path {
   stroke: #959595;
+}
+.postItem--text-scheduled svg {
+  cursor: pointer;
 }
 .postItem--text p {
   font-family: "SF Pro Text", sans-serif;

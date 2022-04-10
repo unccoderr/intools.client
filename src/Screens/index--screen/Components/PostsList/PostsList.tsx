@@ -1,21 +1,15 @@
 import { useContext, useEffect, useState } from "react"
-import { useLocalization, usePostsData } from "../../../../Hooks"
-import moment from "moment"
+import { PostSection, useLocalization, usePostsData } from "../../../../Hooks"
 
 import { AppContext } from "../../../../app"
 import { PostItem } from "../PostItem/PostItem"
 import { ErrorIllustration } from "../../../../Components"
 import './PostList.css'
 
-import { IPost } from "../../../../Types"
-
 import { postsList } from "../../../../Config"
 const { at, today, title, tabs, create_button, empty_posts } = postsList
 
-interface PostSection {
-	date: Date,
-	posts: IPost[]
-}
+
 enum PostTabType {
     ALL = 'all',
     SCHEDULED = 'scheduled',
@@ -29,11 +23,10 @@ export const PostsList = ({ className }: PostsListProps) => {
     const { localize } = new useLocalization(language)
 	const { getPostsList, getPostObject } = usePostsData
     const [tab, setTab] = useState(PostTabType.ALL)
-	const [posts, setPosts] = useState<PostSection[ ]>([])
+	const [postsSections, setPostsSections] = useState<PostSection[]>([])
 
 	const getSectionHeader = (date: Date) => {
-		const timestamp = new Date(moment(date, 'YYYY-mm-dd hh:mm:ss').toISOString().replace(/\s/, 'T'))
-		console.log({ date, date_valid: moment(date).isValid(), timestamp, timestamp_valid: moment(timestamp).isValid() })
+		const timestamp = new Date(date)
 		const month = timestamp.getMonth().toString().length === 1
 			? '0' + timestamp.getMonth()
 			: timestamp.getMonth()
@@ -44,21 +37,13 @@ export const PostsList = ({ className }: PostsListProps) => {
 		if (setOpenPlannerModal) setOpenPlannerModal(true)
 	}
 
-	const hasPosts = posts.length > 0
+	const hasPosts = postsSections.length > 0
 
 	useEffect(() => {
 		const posts = getPostsList(tab)
-		const postObject = getPostObject(posts)
-
-		const postsList: PostSection[] = []
-		for (const dateKey in postObject) {
-			const postSection: PostSection = {
-				date: new Date(dateKey),
-				posts: postObject[dateKey]
-			}
-			postsList.push(postSection)
-		}
-		setPosts(postsList)
+		const sections = getPostObject(posts)
+		setPostsSections(sections)
+		//console.log(sections)
 	}, [tab, openPlannerModal])
 
     return <div className={`postList${className ? ` ${className}` : ''}`}>
@@ -92,12 +77,12 @@ export const PostsList = ({ className }: PostsListProps) => {
 			</li>
         </ul>
         { hasPosts ? <div className={'postList--wrapper'}>
-			{ posts.map((section, sectionID) => {
-				return <section key={section.date.toString() + 'section' + sectionID}>
+			{ postsSections.map(section => {
+				return <section key={'section_' + section.date}>
 					<h3>{getSectionHeader(section.date)}</h3>
 					<div className={'postList--wrapperInner'}>
 						{ section.posts.map(currentPost => {
-							return <PostItem key={currentPost.id} post={currentPost}/>
+							return <PostItem key={currentPost.id} scheduled={new Date(currentPost.timestamp) > new Date()} post={currentPost}/>
 						}) }
 					</div>
 				</section>

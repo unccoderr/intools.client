@@ -36,6 +36,8 @@ interface ContextProps {
 	toggleStoriesCircle?: Dispatch<SetStateAction<boolean>>,
 	usernameValue: string,
 	setUsernameValue?: Dispatch<SetStateAction<string>>,
+	profilenameValue: string,
+	setProfilenameValue?: Dispatch<SetStateAction<string>>,
 	categoryValue: string,
 	setCategoryValue?: Dispatch<SetStateAction<string>>,
 	biographyValue: string,
@@ -59,6 +61,7 @@ interface ContextProps {
 	removeProfile?: () => void
 }
 export const ProfileBuilderContext = createContext<ContextProps>({
+	profilenameValue: '',
 	storiesCircle: false,
 	stories: false,
 	famousIcon: false,
@@ -99,6 +102,7 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 	const [photos, togglePhotos] = useState(content.photos.initial)
 	const [storiesCircle, toggleStoriesCircle] = useState(content.stories_circle.initial)
 	const [usernameValue, setUsernameValue] = useState('')
+	const [profilenameValue, setProfilenameValue] = useState('')
 	const [categoryValue, setCategoryValue] = useState('')
 	const [biographyValue, setBiographyValue] = useState('')
 	const [linkValue, setLinkValue] = useState('')
@@ -139,6 +143,7 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 		if (getProfile(profileID)) {
 			const profile = getProfile(profileID)
 			updateProfile(profileID, {
+				profilename: '',
 				is_contacted: false,
 				is_subscribed: false,
 				timestamp: profile.timestamp,
@@ -211,8 +216,10 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 			if (setLinkValue) setLinkValue(builderProfile.external_url)
 			if (setIsSubscribed) setIsSubscribed(builderProfile.is_subscribed)
 			if (setIsContacted) setIsContacted(builderProfile.is_contacted)
+			if (setProfilenameValue) setProfilenameValue(builderProfile.profilename)
 		} else {
 			createProfile({
+				profilename: '',
 				is_contacted: false,
 				is_subscribed: false,
 				timestamp: new Date(),
@@ -240,6 +247,7 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 		if (!getProfile(+profileID)) return
 		const profile = getProfile(profileID)
 		updateProfile(+profileID, {
+			profilename: profilenameValue,
 			is_contacted: isContacted,
 			is_subscribed: isSubscribed,
 			timestamp: profile.timestamp,
@@ -254,7 +262,7 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 			stories: getProfile(+profileID).stories,
 			gallery: getProfile(+profileID).gallery,
 		})
-	}, [usernameValue, categoryValue, biographyValue, linkValue, postsCount, followersCount, followingCount, avatarURL, isContacted, isSubscribed])
+	}, [usernameValue, categoryValue, biographyValue, linkValue, postsCount, followersCount, followingCount, avatarURL, isContacted, isSubscribed, profilenameValue])
 
 	return <ProfileBuilderContext.Provider value={{
 		stories, toggleStories,
@@ -269,6 +277,7 @@ export const ProfileBuilderContextProvider = ({ children, profileID }: ProfileBu
 		photos, togglePhotos,
 		storiesCircle, toggleStoriesCircle,
 		usernameValue, setUsernameValue,
+		profilenameValue, setProfilenameValue,
 		categoryValue, setCategoryValue,
 		biographyValue, setBiographyValue,
 		linkValue, setLinkValue,

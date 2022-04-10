@@ -21,6 +21,8 @@ export const SubscriptionModal = () => {
     const disableModal = () => {
         if (!setOpenSubscriptionModal) return
         setOpenSubscriptionModal(false)
+
+		if (localStorage.getItem(DATA_KEYS.CLOSED_SUBSCRIPTION_MODEL) === '+') return
 		localStorage.setItem(DATA_KEYS.CLOSED_SUBSCRIPTION_MODEL, '+')
 		window.location.reload()
     }
@@ -28,7 +30,7 @@ export const SubscriptionModal = () => {
 
     return <ModalWrapper modal={openSubscriptionModal} hideModal={disableModal}>
         <div className="subscriptionModal">
-            <div className="subscriptionModal--header">
+            <div className={"subscriptionModal--header"}>
                 <h2>
                     InTools
                     <span>pro</span>

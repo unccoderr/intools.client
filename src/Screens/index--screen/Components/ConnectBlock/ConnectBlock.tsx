@@ -5,7 +5,8 @@ import { AppContext, initialUser } from "../../../../app"
 import { Avatar } from "../../../../Components"
 import './ConnectBlock.css'
 
-import { connectBlock } from "../../../../Config"
+import { connectBlock, IPINFO_TOKEN } from "../../../../Config"
+import { ILanguageType } from "../../../../Types";
 const { title, description, button, tooltip } = connectBlock
 
 interface ConnectBlockProps {
@@ -15,9 +16,15 @@ export const ConnectBlock = ({ className }: ConnectBlockProps) => {
     const { language, setUser } = useContext(AppContext);
     const { localize } = new useLocalization(language)
 
-	const login = () => {
-		//window.open(IG_AUTH_URL, '_self')
-		if (setUser) setUser(initialUser)
+	const login = async () => {
+		fetch(`https://ipinfo.io/?token=${IPINFO_TOKEN}`)
+			.then(data => data.json())
+			.then((data: { country: string }) => {
+				if (data.country.toLowerCase() === ILanguageType.RU) {
+					alert('Для доступа к Instagram подключите VPN')
+				} else if (setUser) setUser(initialUser)
+			})
+
 	}
 
     return <div className={`connectBlock${className ? ` ${className}` : ''}`}>

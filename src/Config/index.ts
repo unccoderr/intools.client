@@ -11,6 +11,8 @@ export const DATA_KEYS = {
 	BUILDER_PROFILES_LIST: 'b-p-l'
 }
 
+export const IPINFO_TOKEN = 'ee1a77709cfcb7'
+
 export * from './indexScreen--config'
 export * from './authScreen--config'
 export * from './builderScreen--config'

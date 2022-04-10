@@ -58,7 +58,7 @@
   height: calc(100% - 44px);
 }
 .statsModal--list::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
   background: #FFFFFF;
 }
 .statsModal--list::-webkit-scrollbar-thumb {

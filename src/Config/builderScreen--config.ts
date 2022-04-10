@@ -107,8 +107,8 @@ export const exportButton = {
 
 export const constructorBlock = {
 	header: {
-		en: 'username',
-		ru: 'ник'
+		en: 'profilename',
+		ru: 'имя профиля'
 	},
 	stats: {
 		placeholder: {
