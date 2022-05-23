@@ -1,0 +1,39 @@
+@use '../../../styles/typography'
+@use '../../../styles/colors'
+
+@mixin numberText
+	font-family: 'SF Pro Display', sans-serif
+	font-weight: 500
+	font-size: 40px
+	line-height: 48px
+
+
+.m
+	&__statsBlock
+		list-style: none
+		display: grid
+		grid-template-columns: repeat(4, 1fr)
+		grid-gap: 30px
+		&__item
+			cursor: pointer
+			padding: 16px
+			border-radius: 24px
+			@include numberText
+			& span
+				padding-top: 36px
+				display: block
+			&_positive
+				color: colors.$icons-positive-light
+				background: colors.$surface-positive-light
+			&_negative
+				color: colors.$text-negative-light
+				background: colors.$surface-negative-light
+			&_accent
+				background: colors.$surface-accent-light
+			&_default
+				background: colors.$surface-placeholder-light
+		
+
+
+
+

@@ -1,0 +1,120 @@
+.o__navbar {
+  z-index: 1;
+  top: 0;
+  position: sticky;
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(209, 213, 219, 0.8);
+}
+.o__navbar__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+.o__navbar__left {
+  display: flex;
+  align-items: center;
+}
+.o__navbar__left svg {
+  margin-right: 12px;
+}
+.o__navbar__right {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.o__navbar__rightOptions {
+  border: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 4px 4px 0 4px;
+  background: #F2F2F2;
+  margin-right: 12px;
+}
+.o__navbar__rightOverlay {
+  transition: 0.07s ease-out;
+  position: absolute;
+  left: -213px;
+  top: 64px;
+  background: #FFFFFF;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0px -2px 6px rgba(0, 0, 0, 0.04), 0px 0px 3px rgba(0, 0, 0, 0.04);
+  padding: 12px 12px 20px 12px;
+  border-radius: 12px 2px 12px 12px;
+}
+.o__navbar__rightOverlay-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.o__navbar__rightOverlayDivider {
+  height: 1px;
+  background: #CFD2D4;
+  margin-bottom: 20px;
+}
+.o__navbar__rightOverlaySection {
+  width: 100%;
+  text-align: left;
+  background: #FFFFFF;
+  border: 0;
+  display: flex;
+  align-items: center;
+}
+.o__navbar__rightOverlaySection h3 {
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.o__navbar__rightOverlaySection p {
+  font-family: "SF Pro Text", sans-serif;
+  color: #959595;
+  font-size: 14px;
+  line-height: 20px;
+}
+.o__navbar__rightOverlaySection_large > div:first-child {
+  width: 39px;
+  height: 39px;
+}
+.o__navbar__rightOverlaySection_large > div:last-child {
+  padding-left: 12px;
+}
+.o__navbar__rightOverlaySection:not(.o__navbar__rightOverlaySection_large) svg {
+  margin-right: 10px;
+}
+.o__navbar__rightOverlaySection:not(:last-child) {
+  margin-bottom: 20px;
+}
+.o__navbar__rightOverlayAvatar {
+  width: 40px;
+  height: 40px;
+}
+.o__navbar__rightOverlayAvatar div {
+  width: 36px;
+  height: 36px;
+}
+.o__navbar__rightOverlayAvatar div div {
+  width: 32px;
+  height: 32px;
+}
+.o__navbar__rightText {
+  font-weight: bolder;
+}
+.o__navbar__rightText a:first-child {
+  padding-right: 4px;
+}
+.o__navbar__rightText a:last-child {
+  padding-left: 4px;
+}
+.o__navbar__rightAvatar {
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (max-width: 800px) {
+  .o__navbar__wrapper {
+    height: 58px;
+    padding: 9px 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

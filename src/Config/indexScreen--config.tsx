@@ -9,7 +9,7 @@ export const builderProfileList = {
     },
     button: {
         en: 'Add new',
-        ru: 'Создать новый'
+        ru: 'Добавить новый'
     },
     empty_profiles: {
 	en: <>
@@ -183,7 +183,7 @@ export const postsList = {
     },
     create_button: {
         en: 'Create new',
-        ru: 'Создать новый'
+        ru: 'Создать новую'
     },
     empty_posts: {
         en: <>

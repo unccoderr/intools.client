@@ -1,0 +1,21 @@
+@use '../../../../../styles/typography'
+@use '../../../../../styles/colors'
+
+.welcomeBlock
+	&--wrapper
+		display: flex
+		align-items: center
+		padding-bottom: 80px
+		& svg
+			min-width: 89px
+			min-height: 98px
+		& div
+			padding-left: 16px
+			& h1
+				@include typography.Title1
+				padding-bottom: 1px
+			& p
+				@include typography.Body1
+	&--image
+		width: 558px
+		

@@ -8,7 +8,7 @@ Inside [config folder](src/Config) are located localization files with variables
 * [indexScreen--config](src/Config/indexScreen--config.tsx) for IndexScreen
 * [authScreen--config](src/Config/authScreen--config.ts) for AuthScreen and LoginScreen
 * [builderScreen--config](src/Config/builderScreen--config.ts) for BuilderScreen
-* [header--config](src/Config/header--config.ts) for Header component
+* [header--config](src/Config/header--config.ts) for IconedHeader component
 
 ### Adding Localization
 To add new language to localization config and functionality, follow the instruction below:

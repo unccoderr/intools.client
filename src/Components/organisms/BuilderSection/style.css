@@ -1,0 +1,51 @@
+.o__builderSection {
+  height: 100%;
+  position: relative;
+  padding-bottom: 66px;
+}
+.o__builderSection__header {
+  padding-bottom: 17px;
+}
+.o__builderSection__header h2 {
+  padding-bottom: 4px;
+}
+.o__builderSection__header div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.o__builderSection__header div button {
+  display: none;
+}
+.o__builderSection__wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  grid-gap: 16px;
+  padding-bottom: 188px;
+  height: 100%;
+  overflow-y: auto;
+}
+.o__builderSection__wrapper::-webkit-scrollbar {
+  width: 0;
+}
+.o__builderSection__wrapper_empty {
+  padding-top: 41%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.o__builderSection__wrapper_empty svg {
+  margin-bottom: 8px;
+}
+.o__builderSection__wrapper_empty span {
+  text-align: center;
+}
+.o__builderSection__button {
+  position: absolute;
+  bottom: 24px;
+  width: calc(100% - 31px);
+}
+
+/*# sourceMappingURL=style.css.map */

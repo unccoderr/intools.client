@@ -1,0 +1,51 @@
+.m__connectBlock {
+  padding: 16px;
+  border-radius: 24px;
+  background: #F2F2F2;
+  display: flex;
+}
+.m__connectBlock__avatar {
+  height: 64px;
+  min-width: 64px;
+}
+.m__connectBlock__wrapper {
+  padding-left: 16px;
+}
+.m__connectBlock__wrapper h2 {
+  display: flex;
+  align-items: center;
+  padding-bottom: 4px;
+}
+.m__connectBlock__wrapper h2 span {
+  margin-left: 6%;
+  display: block;
+  position: relative;
+}
+.m__connectBlock__wrapper h2 span:after {
+  transition: 0.1s;
+  opacity: 1;
+  visibility: hidden;
+  width: 279px;
+  position: absolute;
+  top: -52px;
+  left: 29px;
+  content: attr(title);
+  background: #FFFFFF;
+  padding: 10px;
+  border-radius: 12px 12px 12px 2px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0px -2px 6px rgba(0, 0, 0, 0.04), 0px 0px 3px rgba(0, 0, 0, 0.04);
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.m__connectBlock__wrapper h2 span:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+.m__connectBlock__wrapper p {
+  padding-bottom: 16px;
+}
+
+/*# sourceMappingURL=style.css.map */

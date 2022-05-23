@@ -1,0 +1,90 @@
+@use '../../../styles/typography'
+@use '../../../styles/colors'
+
+.m
+	&__builderItem
+		padding: 16px 11px 16px 16px
+		border-radius: 24px
+		border: 1px solid colors.$effect-blur-light
+		&__header
+			display: flex
+			justify-content: space-between
+			align-items: center
+			padding: 0 5px 8px 0
+			& div
+				position: relative
+			& button
+				height: 24px
+				width: 24px
+				background: none
+				border: none
+				cursor: pointer
+				&:not(:last-child)
+					margin-right: 8px
+			&Overlay
+				transition: .1s ease-out
+				position: absolute
+				right: 56px
+				top: 12px
+				width: 177px
+				padding: 11px 16px
+				border-radius: 12px
+				background: #F2F2F2
+				list-style: none
+				&_hidden
+					opacity: 0
+					visibility: hidden
+				& li
+					& button
+						@include typography.Body1
+						text-align: left
+						width: 100%
+						display: block
+					&:first-child
+						& button
+							display: block
+							color: colors.$text-negative-light
+						&::after
+							content: ' '
+							width: calc(100% + 32px)
+							height: 1px
+							margin-left: -16px
+							display: block
+							background: rgba(0, 0, 0, 0.2)
+							margin-top: 11px
+							margin-bottom: 9px
+		&__content
+			display: flex
+			cursor: pointer
+			align-items: center
+			&Avatar
+				background: colors.$effect-inst1-light
+				display: flex
+				align-items: center
+				justify-content: center
+				min-width: 68px
+				height: 68px
+				border-radius: 50%
+				& > div
+					display: block
+					box-sizing: content-box
+					background-position: center
+					background-size: cover
+					border-radius: 50%
+					width: 56px
+					height: 56px
+					border: 3px solid #FFFFFF
+			&List
+				width: 100%
+				padding: 0 11px 0 4px
+				list-style: none
+				display: grid
+				grid-template-columns: repeat(3, 1fr)
+				& li
+					align-items: center
+					display: flex
+					flex-direction: column
+					& span
+						font-weight: normal
+
+			

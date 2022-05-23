@@ -1,0 +1,38 @@
+@use '../../../styles/colors'
+@use '../../../styles/typography'
+
+.a
+	&__crumb
+		border: 0
+		padding: 4px 16px
+		border-radius: 12px
+		background: colors.$surface-placeholder-light
+		@include typography.Body2
+		&_active
+			color: colors.$text-static-light
+			background: colors.$icons-main-light
+	&__btn
+		display: flex
+		align-items: center
+		justify-content: center
+		border: 0
+	
+		background: colors.$buttons-accent-light
+		@include typography.Body1(colors.$text-static-light)
+		& svg
+			fill: colors.$text-static-light
+		&_s
+			padding: 4px 12px 4px 4px
+			border-radius: 8px
+			& svg
+				margin-right: 4px
+		&_m
+			padding: 8px 16px 8px 8px
+			border-radius: 12px
+			& svg
+				margin-right: 4px
+		&_l
+			padding: 16px
+			border-radius: 12px
+			& svg
+				margin-right: 10px

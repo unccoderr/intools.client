@@ -1,0 +1,90 @@
+.a__typography_constructorBody1 {
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 13px;
+  font-weight: bold;
+}
+.a__typography_constructorBody2 {
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 13px;
+  line-height: 16px;
+}
+.a__typography_constructorCaption {
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 11px;
+  line-height: 16px;
+}
+.a__typography_constructorNumbers {
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+}
+.a__typography_constructorTitle {
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+}
+.a__typography_title1 {
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: bold;
+}
+.a__typography_title2 {
+  font-family: "SF Pro Display", sans-serif;
+  color: #000000;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+}
+.a__typography_header {
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.a__typography_body1 {
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.a__typography_body2 {
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 14px;
+  line-height: 20px;
+}
+.a__typography_caption {
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 12px;
+  line-height: 16px;
+}
+.a__typography_lightMain {
+  color: #000000;
+}
+.a__typography_lightSecondary {
+  color: #959595;
+}
+.a__typography_lightNegative {
+  color: #EB5757;
+}
+.a__typography_darkMain {
+  color: #FFFFFF;
+}
+.a__typography_darkSecondary {
+  color: #9EA0A2;
+}
+.a__typography_darkNegative {
+  color: #F86A6A;
+}
+
+/*# sourceMappingURL=style.css.map */

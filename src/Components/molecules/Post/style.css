@@ -1,0 +1,19 @@
+.m__post {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.m__post_scheduled {
+  cursor: pointer;
+}
+.m__post__image {
+  background: #F2F2F2 center;
+  min-width: 96px;
+  display: block;
+  height: 96px;
+  border-radius: 12px;
+  background-size: cover;
+}
+
+/*# sourceMappingURL=style.css.map */

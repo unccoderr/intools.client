@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom"
 
 import { AppContextProvider } from "./app--context"
 import { SubscriptionModal, PlannerModal, StatsModal, BuilderModal } from "../Components"
-import { IndexRouter } from "../Routing"
+import { Routing } from "../routing"
 
 export const App = () => {
 	return <BrowserRouter>
@@ -12,7 +12,7 @@ export const App = () => {
 			<StatsModal/>
 			<PlannerModal/>
 			<SubscriptionModal/>
-			<IndexRouter/>
+			<Routing/>
 		</AppContextProvider>
 	</BrowserRouter>
 }

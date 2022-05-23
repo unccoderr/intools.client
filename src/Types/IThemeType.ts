@@ -1,4 +1,4 @@
 export enum IThemeType {
-    LIGHT,
-    DARK
+    LIGHT = 'light',
+    DARK = 'dark'
 }

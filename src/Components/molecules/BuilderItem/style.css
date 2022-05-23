@@ -1,0 +1,104 @@
+.m__builderItem {
+  padding: 16px 11px 16px 16px;
+  border-radius: 24px;
+  border: 1px solid rgba(209, 213, 219, 0.8);
+}
+.m__builderItem__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px 8px 0;
+}
+.m__builderItem__header div {
+  position: relative;
+}
+.m__builderItem__header button {
+  height: 24px;
+  width: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.m__builderItem__header button:not(:last-child) {
+  margin-right: 8px;
+}
+.m__builderItem__headerOverlay {
+  transition: 0.1s ease-out;
+  position: absolute;
+  right: 56px;
+  top: 12px;
+  width: 177px;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: #F2F2F2;
+  list-style: none;
+}
+.m__builderItem__headerOverlay_hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.m__builderItem__headerOverlay li button {
+  font-family: "SF Pro Text", sans-serif;
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+  display: block;
+}
+.m__builderItem__headerOverlay li:first-child button {
+  display: block;
+  color: #EB5757;
+}
+.m__builderItem__headerOverlay li:first-child::after {
+  content: " ";
+  width: calc(100% + 32px);
+  height: 1px;
+  margin-left: -16px;
+  display: block;
+  background: rgba(0, 0, 0, 0.2);
+  margin-top: 11px;
+  margin-bottom: 9px;
+}
+.m__builderItem__content {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+.m__builderItem__contentAvatar {
+  background: linear-gradient(180deg, #DE0046 0%, #F7A34B 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 68px;
+  height: 68px;
+  border-radius: 50%;
+}
+.m__builderItem__contentAvatar > div {
+  display: block;
+  box-sizing: content-box;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  border: 3px solid #FFFFFF;
+}
+.m__builderItem__contentList {
+  width: 100%;
+  padding: 0 11px 0 4px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.m__builderItem__contentList li {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.m__builderItem__contentList li span {
+  font-weight: normal;
+}
+
+/*# sourceMappingURL=style.css.map */

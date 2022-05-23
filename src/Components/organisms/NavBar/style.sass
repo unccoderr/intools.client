@@ -1,0 +1,101 @@
+@use '../../../styles/colors'
+@use '../../../styles/typography'
+@use '../../../styles/effects'
+
+.o
+	&__navbar
+		z-index: 1
+		top: 0
+		position: sticky
+		background: colors.$background-main-light
+		border-bottom: 1px solid colors.$effect-blur-light
+		&__wrapper
+			display: flex
+			justify-content: space-between
+			align-items: center
+			padding: 20px 0
+		&__left
+			display: flex
+			align-items: center
+			& svg
+				margin-right: 12px
+		&__right
+			display: flex
+			align-items: center
+			position: relative
+			&Options
+				border: 0
+				cursor: pointer
+				border-radius: 50%
+				padding: 4px 4px 0 4px
+				background: colors.$surface-placeholder-light
+				margin-right: 12px
+			&Overlay
+				transition: .07s ease-out
+				position: absolute
+				left: -213px
+				top: 64px
+				background: #FFFFFF
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0px -2px 6px rgba(0, 0, 0, 0.04), 0px 0px 3px rgba(0, 0, 0, 0.04)
+				padding: 12px 12px 20px 12px
+				border-radius: 12px 2px 12px 12px
+				&-hidden
+					opacity: 0
+					visibility: hidden
+				
+				&Divider
+					height: 1px
+					background: colors.$icons-optional-light
+					margin-bottom: 20px
+				&Section
+					width: 100%
+					text-align: left
+					background: #FFFFFF
+					border: 0
+					display: flex
+					align-items: center
+					& h3
+						@include typography.Body1
+					& p
+						@include typography.Body2(colors.$text-secondary-light)
+					&_large
+						& > div:first-child
+							width: 39px
+							height: 39px
+						& > div:last-child
+							padding-left: 12px
+					&:not(&_large)
+						& svg
+							margin-right: 10px
+					&:not(:last-child)
+						margin-bottom: 20px
+				
+				&Avatar
+					width: 40px
+					height: 40px
+					& div
+						width: 36px
+						height: 36px
+						& div
+							width: 32px
+							height: 32px
+			&Text
+				font-weight: bolder
+				& a
+					&:first-child
+						padding-right: 4px
+					&:last-child
+						padding-left: 4px
+			&Avatar
+				width: 40px
+				height: 40px
+				
+
+@media screen and (max-width: 1280px)
+
+@media screen and (max-width: 800px)
+	.o
+		&__navbar
+			&__wrapper
+				height: 58px
+				padding: 9px 0

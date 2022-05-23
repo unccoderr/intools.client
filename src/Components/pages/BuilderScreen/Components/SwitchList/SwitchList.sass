@@ -1,0 +1,16 @@
+@use '../../../../../styles/typography'
+@use '../../../../../styles/colors'
+
+.switchList
+	display: grid
+	grid-template-columns: 48% 48%
+	grid-gap: 48px 4%
+	&--wrapper
+		display: flex
+		flex-direction: column
+		& h2
+			@include typography.ConstructorTitle
+			padding-bottom: 16px
+		& label
+			&:not(:last-child)
+				margin-bottom: 24px

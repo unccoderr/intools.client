@@ -1,0 +1,41 @@
+.o
+	&__builderSection
+		height: 100%
+		position: relative
+		padding-bottom: 66px
+		&__header
+			padding-bottom: 17px
+			& h2
+				padding-bottom: 4px
+			& div
+				display: flex
+				justify-content: space-between
+				align-items: center
+				& button
+					display: none
+		&__wrapper
+			display: grid
+			grid-template-columns: 1fr
+			grid-auto-rows: min-content
+			grid-gap: 16px
+			padding-bottom: 188px
+			height: 100%
+			overflow-y: auto
+			&::-webkit-scrollbar
+				width: 0
+			&_empty
+				padding-top: 41%
+				display: flex
+				flex-direction: column
+				align-items: center
+				justify-content: center
+				& svg
+					margin-bottom: 8px
+				& span
+					text-align: center
+		&__button
+			position: absolute
+			bottom: 24px
+			width: calc(100% - 31px)
+		
+		

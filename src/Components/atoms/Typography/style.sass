@@ -1,0 +1,46 @@
+@use '../../../styles/typography'
+@use '../../../styles/colors'
+
+.a
+	&__typography
+		&_constructorBody1
+			@include typography.ConstructorBody1
+		&_constructorBody2
+			@include typography.ConstructorBody2
+		&_constructorCaption
+			@include typography.ConstructorCaption
+		&_constructorNumbers
+			@include typography.ConstructorNumbers
+		&_constructorTitle
+			@include typography.ConstructorTitle
+		&_title1
+			@include typography.Title1
+		&_title2
+			@include typography.Title2
+		&_header
+			@include typography.Header
+		&_body1
+			@include typography.Body1
+		&_body2
+			@include typography.Body2
+		&_caption
+			@include typography.Caption
+			
+		&_light
+			&Main
+				color: colors.$text-main-light
+			&Secondary
+				color: colors.$text-secondary-light
+			&Negative
+				color: colors.$text-negative-light
+		&_dark
+			&Main
+				color: colors.$text-main-dark
+			&Secondary
+				color: colors.$text-secondary-dark
+			&Negative
+				color: colors.$text-negative-dark
+
+
+	
+
